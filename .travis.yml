@@ -1,0 +1,75 @@
+---
+dist: xenial
+
+env:
+  - MY_DOMAIN="(myexample.dev|mylabs.dev)"
+
+branches:
+  only:
+  - master
+
+jobs:
+  include:
+    - stage: Tests
+      name: "Markdown link, lint and spell check"
+      language: node_js
+      node_js: 10
+      install:
+        # Install markdownlint and markdown-link-check
+        - npm install -g markdownlint-cli markdown-link-check markdown-spellcheck
+      script:
+        # Markdown check
+        - 'echo "{ MD013: { code_blocks: false } }" > /tmp/markdownlint_config.json'
+        - find . -path ./node_modules -prune -o -name "*.md" -print0 | xargs -t -0 markdownlint -c /tmp/markdownlint_config.json
+        # Link Checks
+        - 'echo "{ \"ignorePatterns\": [ { \"pattern\": \"^(http|https)://localhost\" }, { \"pattern\": \"^(http|https)://.*${MY_DOMAIN}\" } ] }" > /tmp/config.json'
+        #- find . -path ./node_modules -prune -o -name "*.md" -print0 | xargs -t -0 markdown-link-check --config /tmp/config.json --quiet
+        # Spell Check
+        - mdspell '**/*.md' '!**/node_modules/**/*.md' --ignore-numbers --ignore-acronyms --report --en-gb
+
+    - stage: Tests
+      name: "Web links check"
+      language: node_js
+      services:
+        - docker
+      node_js: 10
+      install:
+        - npm install
+      script:
+        # Get local IP
+        - export HOST_IP_ADDRESS="$(ip -4 addr show docker0 | sed -n 's/.* inet \([^/]*\).*/\1/p')"
+        # Build the docs
+        - npm run build
+        - ln -s docs/.vuepress/dist ${TRAVIS_REPO_SLUG##*/}
+        # Start Web server
+        - python3 -m http.server 8080 &> /dev/null &
+        # Check links on generated pages
+        #- docker run -it --rm linkchecker/linkchecker --pause=1 --check-extern --no-status --ignore-url "(http|https)://localhost" --ignore-url "(http|https)://.*${MY_DOMAIN}" http://${HOST_IP_ADDRESS}:8080/${TRAVIS_REPO_SLUG##*/}
+
+    - stage: Build & Deploy
+      name: "Build and Deploy to GitHub pages"
+      language: node_js
+      node_js: 10
+      install:
+        - npm install
+      script:
+        - npm run build
+        - cp LICENSE docs/.vuepress/dist
+        - sed -e "s@(part-@(https://github.com/${TRAVIS_REPO_SLUG%/*}/${TRAVIS_REPO_SLUG##*/}/tree/master/docs/part-@" -e 's@.\/.vuepress\/public\/@./@' docs/README.md > docs/.vuepress/dist/README.md
+
+      deploy:
+        provider: pages
+        local-dir: docs/.vuepress/dist
+        skip-cleanup: true
+        github-token: $GITHUB_TOKEN
+        target-branch: gh-pages
+        on:
+          branch: master
+
+    - stage: Web Links Check
+      name: "Final web links check with deployed web pages"
+      language: minimal
+      services:
+        - docker
+      script:
+        - docker run -it --rm linkchecker/linkchecker --pause=1 --check-extern --no-status --ignore-url "(http|https)://localhost" --ignore-url "(http|https)://.*${MY_DOMAIN}" https://${TRAVIS_REPO_SLUG%/*}.github.io/${TRAVIS_REPO_SLUG##*/}

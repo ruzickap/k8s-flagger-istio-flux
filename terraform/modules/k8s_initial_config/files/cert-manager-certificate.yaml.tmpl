@@ -1,0 +1,31 @@
+apiVersion: v1
+type: kubernetes.io/tls
+kind: Secret
+metadata:
+  name: ingress-cert-${letsencrypt_environment}
+  namespace: cert-manager
+  annotations:
+    kubed.appscode.com/sync: app=kubed
+data:
+  tls.crt: ""
+  tls.key: ""
+---
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: ingress-cert-${letsencrypt_environment}
+  namespace: cert-manager
+spec:
+  secretName: ingress-cert-${letsencrypt_environment}
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-${letsencrypt_environment}-dns
+  commonName: "*.${dnsName}"
+  dnsNames:
+  - "*.${dnsName}"
+  acme:
+    config:
+    - dns01:
+        provider: ${cloud_platform}-dns
+      domains:
+      - "*.${dnsName}"

@@ -1,0 +1,88 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: harbor-gateway
+  namespace: harbor
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http-harbor
+      protocol: HTTP
+    hosts:
+    - harbor.${MY_DOMAIN}
+    tls:
+      httpsRedirect: true
+  - port:
+      number: 443
+      name: https-harbor
+      protocol: HTTPS
+    hosts:
+    - harbor.${MY_DOMAIN}
+    - notary.${MY_DOMAIN}
+    tls:
+      mode: PASSTHROUGH
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: harbor-http-virtual-service
+  namespace: harbor
+spec:
+  hosts:
+  - harbor.${MY_DOMAIN}
+  gateways:
+  - harbor-gateway
+  http:
+  - match:
+    - port: 80
+    route:
+    - destination:
+        host: harbor.harbor.svc.cluster.local
+        port:
+          number: 80
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: harbor-https-virtual-service
+  namespace: harbor
+spec:
+  hosts:
+  - harbor.${MY_DOMAIN}
+  gateways:
+  - harbor-gateway
+  tls:
+  - match:
+    - port: 443
+      sniHosts:
+      - harbor.${MY_DOMAIN}
+    route:
+    - destination:
+        host: harbor.harbor.svc.cluster.local
+        port:
+          number: 443
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: harbor-notary-virtual-service
+  namespace: harbor
+spec:
+  hosts:
+  - notary.${MY_DOMAIN}
+  gateways:
+  - harbor-gateway
+  tls:
+  - match:
+    - port: 443
+      sniHosts:
+      - notary.${MY_DOMAIN}
+    route:
+    - destination:
+        host: harbor.harbor.svc.cluster.local
+        port:
+          number: 4443

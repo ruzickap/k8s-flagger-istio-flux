@@ -1,0 +1,47 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-staging-dns
+  namespace: cert-manager
+spec:
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: ${email}
+    privateKeySecretRef:
+      name: letsencrypt-staging-dns
+    dns01:
+      providers:
+      - name: azure-dns
+        azuredns:
+          clientID: ${clientID}
+          clientSecretSecretRef:
+            key: CLIENT_SECRET
+            name: cert-manager-dns-config-secret
+          hostedZoneName: ${hostedZoneName}
+          resourceGroupName: ${resource_group_name_dns}
+          subscriptionID: ${subscriptionID}
+          tenantID: ${tenantID}
+---
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-production-dns
+  namespace: cert-manager
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: ${email}
+    privateKeySecretRef:
+      name: letsencrypt-production-dns
+    dns01:
+      providers:
+      - name: azure-dns
+        azuredns:
+          clientID: ${clientID}
+          clientSecretSecretRef:
+            key: CLIENT_SECRET
+            name: cert-manager-dns-config-secret
+          hostedZoneName: ${hostedZoneName}
+          resourceGroupName: ${resource_group_name_dns}
+          subscriptionID: ${subscriptionID}
+          tenantID: ${tenantID}

@@ -1,0 +1,100 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: istio-services-gateway
+  namespace: istio-system
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http-istio-services
+      protocol: HTTP
+    hosts:
+    - grafana.${dnsName}
+    - jaeger.${dnsName}
+    - kiali.${dnsName}
+    - prometheus.${dnsName}
+  - port:
+      number: 443
+      name: https-istio-services
+      protocol: HTTPS
+    hosts:
+    - grafana.${dnsName}
+    - jaeger.${dnsName}
+    - kiali.${dnsName}
+    - prometheus.${dnsName}
+    tls:
+      credentialName: ingress-cert-${letsencrypt_environment}
+      mode: SIMPLE
+      privateKey: sds
+      serverCertificate: sds
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: grafana-virtual-service
+  namespace: istio-system
+spec:
+  hosts:
+  - grafana.${dnsName}
+  gateways:
+  - istio-services-gateway
+  http:
+  - route:
+    - destination:
+        host: grafana.istio-system.svc.cluster.local
+        port:
+          number: 3000
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: jaeger-virtual-service
+  namespace: istio-system
+spec:
+  hosts:
+  - jaeger.${dnsName}
+  gateways:
+  - istio-services-gateway
+  http:
+  - route:
+    - destination:
+        host: tracing.istio-system.svc.cluster.local
+        port:
+          number: 80
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: kiali-virtual-service
+  namespace: istio-system
+spec:
+  hosts:
+  - kiali.${dnsName}
+  gateways:
+  - istio-services-gateway
+  http:
+  - route:
+    - destination:
+        host: kiali.istio-system.svc.cluster.local
+        port:
+          number: 20001
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: prometheus-virtual-service
+  namespace: istio-system
+spec:
+  hosts:
+  - prometheus.${dnsName}
+  gateways:
+  - istio-services-gateway
+  http:
+  - route:
+    - destination:
+        host: prometheus.istio-system.svc.cluster.local
+        port:
+          number: 9090

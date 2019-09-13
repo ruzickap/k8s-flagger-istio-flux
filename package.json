@@ -1,0 +1,36 @@
+{
+  "name": "k8s-flagger-istio-flux",
+  "version": "0.0.1",
+  "description": "Install services using Flux + Istio + Gitlab + Harbor inside Kops cluster running on AWS",
+  "author": "Petr Ruzicka <petr.ruzicka@gmail.com>",
+  "license": "Apache-2.0",
+  "homepage": "https://ruzickap.github.io/k8s-flagger-istio-flux",
+  "keywords": [
+    "gitlab",
+    "flux",
+    "harbor",
+    "kubernetes",
+    "demo",
+    "presentation"
+  ],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruzickap/k8s-flagger-istio-flux.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ruzickap/k8s-flagger-istio-flux/issues"
+  },
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "dependencies": {
+    "vuepress": "^1.0.4",
+    "@vuepress/plugin-back-to-top": "^1.0.4",
+    "@vuepress/plugin-medium-zoom": "^1.0.4",
+    "vuepress-plugin-seo": "^0.1.2",
+    "vuepress-plugin-reading-progress": "^1.0.7",
+    "vuepress-plugin-smooth-scroll": "^0.0.3"
+  }
+}
