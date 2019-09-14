@@ -56,8 +56,6 @@ mkdir: created directory 'tmp/k8s-flux-repository/workloads'
  create mode 100644 README.md
 ```
 
-## Install Flux
-
 Add the Flux repository:
 
 ```bash
