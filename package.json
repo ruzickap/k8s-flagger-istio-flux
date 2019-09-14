@@ -26,9 +26,9 @@
     "build": "vuepress build docs"
   },
   "dependencies": {
-    "vuepress": "^1.0.4",
-    "@vuepress/plugin-back-to-top": "^1.0.4",
-    "@vuepress/plugin-medium-zoom": "^1.0.4",
+    "vuepress": "^1.1.0",
+    "@vuepress/plugin-back-to-top": "^1.1.0",
+    "@vuepress/plugin-medium-zoom": "^1.1.0",
     "vuepress-plugin-seo": "^0.1.2",
     "vuepress-plugin-reading-progress": "^1.0.7",
     "vuepress-plugin-smooth-scroll": "^0.0.3"
