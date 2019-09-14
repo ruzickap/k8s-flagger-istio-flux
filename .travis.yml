@@ -23,7 +23,7 @@ jobs:
         - find . -path ./node_modules -prune -o -name "*.md" -print0 | xargs -t -0 markdownlint -c /tmp/markdownlint_config.json
         # Link Checks
         - 'echo "{ \"ignorePatterns\": [ { \"pattern\": \"^(http|https)://localhost\" }, { \"pattern\": \"^(http|https)://.*${MY_DOMAIN}\" } ] }" > /tmp/config.json'
-        #- find . -path ./node_modules -prune -o -name "*.md" -print0 | xargs -t -0 markdown-link-check --config /tmp/config.json --quiet
+        - find . -path ./node_modules -prune -o -name "*.md" -print0 | xargs -t -0 markdown-link-check --config /tmp/config.json --quiet
         # Spell Check
         - mdspell '**/*.md' '!**/node_modules/**/*.md' --ignore-numbers --ignore-acronyms --report --en-gb
 
@@ -44,7 +44,7 @@ jobs:
         # Start Web server
         - python3 -m http.server 8080 &> /dev/null &
         # Check links on generated pages
-        #- docker run -it --rm linkchecker/linkchecker --pause=1 --check-extern --no-status --ignore-url "(http|https)://localhost" --ignore-url "(http|https)://.*${MY_DOMAIN}" http://${HOST_IP_ADDRESS}:8080/${TRAVIS_REPO_SLUG##*/}
+        - docker run -it --rm linkchecker/linkchecker --pause=1 --check-extern --no-status --ignore-url "(http|https)://localhost" --ignore-url "(http|https)://.*${MY_DOMAIN}" http://${HOST_IP_ADDRESS}:8080/${TRAVIS_REPO_SLUG##*/}
 
     - stage: Build & Deploy
       name: "Build and Deploy to GitHub pages"
