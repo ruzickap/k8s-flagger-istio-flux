@@ -15,21 +15,20 @@ kubectl apply -f https://raw.githubusercontent.com/weaveworks/flagger/master/art
 To install the chart with the release name `flagger` for Istio:
 
 ```bash
-helm install --name flagger flagger/flagger --wait \
-  --namespace=istio-system \
-  --set crd.create=false \
-  --set meshProvider=istio \
-  --set metricsServer=http://prometheus:9090
+helm install --name flagger --namespace=istio-system flagger/flagger --wait \
+  --set crd.create="false" \
+  --set logLevel="debug" \
+  --set meshProvider="istio" \
+  --set metricsServer="http://prometheus:9090"
 ```
 
 Install Flagger's Grafana Helm Release:
 
 ```bash
-helm install --name flagger-grafana flagger/grafana --wait \
-  --namespace=istio-system \
+helm install --name flagger-grafana --namespace=istio-system flagger/grafana --wait \
+  --set password=admin \
   --set url=http://prometheus:9090 \
-  --set user=admin \
-  --set password=admin
+  --set user=admin
 ```
 
 Expose `flagger-grafana` outside:

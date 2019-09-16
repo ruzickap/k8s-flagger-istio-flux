@@ -19,7 +19,6 @@ module.exports = {
         items: [
           { text: 'Flux', link: 'https://fluxcd.io' },
           { text: 'Flagger', link: 'https://flagger.app' },
-          { text: 'Harbor', link: 'https://goharbor.io' },
         ]
       }
     ],

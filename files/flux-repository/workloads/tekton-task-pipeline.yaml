@@ -1,0 +1,72 @@
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: build-docker-image-from-git-task
+spec:
+  inputs:
+    resources:
+      - name: docker-source
+        type: git
+    params:
+      - name: pathToDockerFile
+        description: The path to the dockerfile to build
+        default: /workspace/docker-source/Dockerfile
+      - name: pathToContext
+        description:
+          The build context used by Kaniko
+          (https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)
+        default: /workspace/docker-source
+  outputs:
+    resources:
+      - name: builtImage
+        type: image
+  volumes:
+    - name: docker-config
+      secret:
+        secretName: docker-config
+        items:
+          - key: .dockerconfigjson
+            path: config.json
+  steps:
+    - name: build-and-push
+      image: gcr.io/kaniko-project/executor
+      env:
+        - name: "DOCKER_CONFIG"
+          value: "/builder/home/.docker/"
+      command:
+        - /kaniko/executor
+      args:
+        - --dockerfile=$(inputs.params.pathToDockerFile)
+        - --destination=$(outputs.resources.builtImage.url)
+        - --context=$(inputs.params.pathToContext)
+      volumeMounts:
+        - name: docker-config
+          mountPath: /builder/home/.docker/
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: build-docker-image-from-git-pipeline
+spec:
+  resources:
+  - name: docker-source
+    type: git
+  - name: builtImage
+    type: image
+  tasks:
+  - name: build-docker-image-from-git-task-run
+    taskRef:
+      name: build-docker-image-from-git-task
+    params:
+    - name: pathToDockerFile
+      value: Dockerfile.ci
+    - name: pathToContext
+      value: /workspace/docker-source/
+    resources:
+      inputs:
+      - name: docker-source
+        resource: docker-source
+      outputs:
+      - name: builtImage
+        resource: builtImage

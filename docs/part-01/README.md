@@ -69,7 +69,7 @@ fi
 Install [Helm](https://helm.sh/):
 
 ```bash
-curl -s https://raw.githubusercontent.com/helm/helm/master/scripts/get | bash -s -- --version v2.14.2
+curl -s https://raw.githubusercontent.com/helm/helm/master/scripts/get | bash -s -- --version v2.14.3
 ```
 
 ## Prepare the Azure environment
@@ -311,26 +311,6 @@ Output for AWS (EKS):
 NAME                                          STATUS   ROLES    AGE     VERSION               INTERNAL-IP   EXTERNAL-IP     OS-IMAGE         KERNEL-VERSION                  CONTAINER-RUNTIME
 ip-10-0-1-116.eu-central-1.compute.internal   Ready    <none>   6m42s   v1.13.10-eks-d6460e   10.0.1.116    18.184.43.220   Amazon Linux 2   4.14.138-114.102.amzn2.x86_64   docker://18.6.1
 ip-10-0-2-250.eu-central-1.compute.internal   Ready    <none>   6m41s   v1.13.10-eks-d6460e   10.0.2.250    54.93.247.34    Amazon Linux 2   4.14.138-114.102.amzn2.x86_64   docker://18.6.1
-```
-
-If you are using Let's Encrypt "staging" you need to download and use their
-"Fake LE Root X1" certificate for running docker images form Harbor:
-
-```bash
-test -d tmp || mkdir tmp
-if [ ${LETSENCRYPT_ENVIRONMENT} = "staging" ]; then
-  CA_CERT=$(kubectl get secrets ingress-cert-staging -n cert-manager -o jsonpath="{.data.ca\.crt}")
-  [ "${CA_CERT}" != "<nil>" ] && echo ${CA_CERT} | base64 -d > tmp/ca.crt
-  test -s tmp/ca.crt || wget -q https://letsencrypt.org/certs/fakelerootx1.pem -O tmp/ca.crt
-  sudo mkdir -p /etc/docker/certs.d/harbor.${MY_DOMAIN}/
-  sudo cp tmp/ca.crt /etc/docker/certs.d/harbor.${MY_DOMAIN}/ca.crt
-  export SSL_CERT_FILE=$PWD/ca.crt
-  for EXTERNAL_IP in $(kubectl get nodes --output=jsonpath="{.items[*].status.addresses[?(@.type==\"ExternalIP\")].address}"); do
-    ssh -q -o StrictHostKeyChecking=no -l admin ${EXTERNAL_IP} \
-      "sudo mkdir -p /etc/docker/certs.d/harbor.${MY_DOMAIN}/ && sudo wget -q https://letsencrypt.org/certs/fakelerootx1.pem -O /etc/docker/certs.d/harbor.${MY_DOMAIN}/ca.crt"
-  done
-  echo "*** Done"
-fi
 ```
 
 Verify if everything is working by accessing these URLs:

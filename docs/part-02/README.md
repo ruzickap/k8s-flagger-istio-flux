@@ -1,5 +1,16 @@
 # Install Flux
 
+Create registry secret for accessing Azure Container Registry
+in `flux` namespace:
+
+```bash
+kubectl create namespace flux
+kubectl create secret --namespace flux docker-registry docker-config \
+  --docker-server="pruzickak8smyexampledev.azurecr.io" \
+  --docker-username="${ARM_CLIENT_ID}" \
+  --docker-password="${ARM_CLIENT_SECRET}"
+```
+
 Flux Architecture:
 
 ![Flux Architecture](https://github.com/fluxcd/flux/raw/18e5174581f44ed8c9a881dd5071179eed1ebf4d/docs/_files/flux-cd-diagram.png
@@ -21,6 +32,7 @@ https://github.com/ruzickap/k8s-flux-repository
 Clone newly create git repository:
 
 ```bash
+mkdir tmp
 if [ ! -n "$(grep "^github.com " ~/.ssh/known_hosts)" ]; then ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null; fi
 git config --global user.email "petr.ruzicka@gmail.com"
 git -C tmp clone git@github.com:ruzickap/k8s-flux-repository.git
@@ -93,13 +105,16 @@ Install Flux:
 ```bash
 helm install --name flux --namespace flux --wait --version 0.12.0 fluxcd/flux \
   --set git.email="petr.ruzicka@gmail.com" \
-  --set git.url=git@github.com:ruzickap/k8s-flux-repository \
+  --set git.pollInterval="10s" \
+  --set git.url="git@github.com:ruzickap/k8s-flux-repository" \
   --set git.user="Flux" \
-  --set helmOperator.create=true \
-  --set helmOperator.createCRD=false \
-  --set registry.insecureHosts="harbor.${MY_DOMAIN}" \
+  --set helmOperator.create="true" \
+  --set helmOperator.createCRD="false" \
+  --set registry.dockercfg.configFileName="/dockercfg/config.json" \
+  --set registry.dockercfg.enabled="true" \
+  --set registry.dockercfg.secretName="docker-config" \
   --set registry.pollInterval="10s" \
-  --set syncGarbageCollection.enabled=true
+  --set syncGarbageCollection.enabled="true"
 ```
 
 Output:

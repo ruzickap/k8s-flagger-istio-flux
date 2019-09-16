@@ -1,0 +1,15 @@
+---
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineRun
+metadata:
+  name: podinfo-build-docker-image-from-git-pipelinerun
+spec:
+  pipelineRef:
+    name: build-docker-image-from-git-pipeline
+  resources:
+    - name: docker-source
+      resourceRef:
+        name: podinfo-project-git
+    - name: builtImage
+      resourceRef:
+        name: podinfo-project-image
