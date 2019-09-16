@@ -33,7 +33,7 @@ git -C tmp/k8s-flux-repository push -q
 fluxctl sync
 ```
 
-Initiate pipelinerun (docker image build form git repository):
+Initiate `PipelineRun` (docker image build form git repository):
 
 ```bash
 envsubst < files/flux-repository/workloads/tekton-pipelinerun.yaml      > tmp/k8s-flux-repository/workloads/tekton-pipelinerun.yaml
