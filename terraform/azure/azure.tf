@@ -55,3 +55,11 @@ module "k8s_initial_config" {
   subscription_id              = var.subscription_id
   tenant_id                    = var.tenant_id
 }
+
+resource "azurerm_container_registry" "acr" {
+  name                = "${var.prefix}${var.kubernetes_cluster_name}${replace(var.dns_zone_name, ".", "")}"
+  resource_group_name = var.resource_group_name
+  location            = var.location
+  sku                 = "Standard"
+  tags                = var.tags
+}

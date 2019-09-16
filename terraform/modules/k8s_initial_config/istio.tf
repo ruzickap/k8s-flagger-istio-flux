@@ -36,7 +36,7 @@ resource "helm_release" "istio" {
   chart      = "istio"
   version    = var.helm_istio_version
   namespace  = kubernetes_namespace.namespace_istio-system.id
-  timeout    = 600
+  timeout    = 1000
 
   set {
     name  = "gateways.istio-ingressgateway.autoscaleMax"

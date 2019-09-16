@@ -28,7 +28,7 @@ data "helm_repository" "stable" {
 }
 
 resource "helm_release" "external-dns" {
-  depends_on = [kubernetes_secret.azure-config-file, kubernetes_cluster_role_binding.tiller]
+  depends_on = [kubernetes_secret.azure-config-file, kubernetes_cluster_role_binding.tiller, helm_release.istio]
   name       = "external-dns"
   repository = data.helm_repository.stable.metadata.0.name
   chart      = "external-dns"
