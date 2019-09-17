@@ -33,7 +33,7 @@ Install necessary software and [Azure CLI](https://docs.microsoft.com/en-us/cli/
 if [ -x /usr/bin/apt ]; then
   apt update -qq
   DEBIAN_FRONTEND=noninteractive apt-get install -y -qq curl gettext-base git jq openssh-client sudo unzip wget > /dev/null
-  curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+  curl -L https://aka.ms/InstallAzureCLIDeb | bash
 fi
 ```
 
@@ -41,7 +41,7 @@ Install [kubectl](https://github.com/kubernetes/kubectl) binary:
 
 ```bash
 if [ ! -x /usr/local/bin/kubectl ]; then
-  sudo curl -s -Lo /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+  sudo curl -Lo /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
   sudo chmod a+x /usr/local/bin/kubectl
 fi
 ```
@@ -50,7 +50,7 @@ Install [hub](https://hub.github.com/) binary:
 
 ```bash
 if [ ! -x /usr/local/bin/hub ]; then
-  curl -sL https://github.com/github/hub/releases/download/v2.12.4/hub-linux-amd64-2.12.4.tgz -o /tmp/hub-linux-amd64.tgz
+  curl -L https://github.com/github/hub/releases/download/v2.12.4/hub-linux-amd64-2.12.4.tgz -o /tmp/hub-linux-amd64.tgz
   tar xvzf /tmp/hub-linux-amd64.tgz hub-linux-amd64-2.12.4/bin/hub --strip-components 2
   sudo mv hub /usr/local/bin/
 fi
@@ -60,7 +60,7 @@ Install [Terraform](https://www.terraform.io/):
 
 ```bash
 if [ ! -x /usr/local/bin/terraform ]; then
-  curl -sL https://releases.hashicorp.com/terraform/0.12.8/terraform_0.12.8_linux_amd64.zip -o /tmp/terraform_linux_amd64.zip
+  curl -L https://releases.hashicorp.com/terraform/0.12.8/terraform_0.12.8_linux_amd64.zip -o /tmp/terraform_linux_amd64.zip
   sudo unzip /tmp/terraform_linux_amd64.zip -d /usr/local/bin
   rm /tmp/terraform_linux_amd64.zip
 fi
@@ -69,7 +69,16 @@ fi
 Install [Helm](https://helm.sh/):
 
 ```bash
-curl -s https://raw.githubusercontent.com/helm/helm/master/scripts/get | bash -s -- --version v2.14.3
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get | bash -s -- --version v2.14.3
+```
+
+Install [fluxctl](https://docs.fluxcd.io/en/stable/references/fluxctl.html):
+
+```bash
+if [ ! -x /usr/local/bin/fluxctl ]; then
+  sudo curl -L https://github.com/fluxcd/flux/releases/download/1.14.2/fluxctl_linux_amd64 -o /usr/local/bin/fluxctl
+  sudo chmod a+x /usr/local/bin/fluxctl
+fi
 ```
 
 ## Prepare the Azure environment
