@@ -72,15 +72,6 @@ Install [Helm](https://helm.sh/):
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get | bash -s -- --version v2.14.3
 ```
 
-Install [fluxctl](https://docs.fluxcd.io/en/stable/references/fluxctl.html):
-
-```bash
-if [ ! -x /usr/local/bin/fluxctl ]; then
-  sudo curl -L https://github.com/fluxcd/flux/releases/download/1.14.2/fluxctl_linux_amd64 -o /usr/local/bin/fluxctl
-  sudo chmod a+x /usr/local/bin/fluxctl
-fi
-```
-
 ## Prepare the Azure environment
 
 ::: warning

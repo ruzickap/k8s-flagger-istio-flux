@@ -103,9 +103,8 @@ customresourcedefinition.apiextensions.k8s.io/helmreleases.flux.weave.works crea
 Install Flux:
 
 ```bash
-helm install --name flux --namespace flux --wait --version 0.12.0 fluxcd/flux \
+helm install --name flux --namespace flux --wait --version 0.14.1 fluxcd/flux \
   --set git.email="petr.ruzicka@gmail.com" \
-  --set git.pollInterval="10s" \
   --set git.url="git@github.com:ruzickap/k8s-flux-repository" \
   --set git.user="Flux" \
   --set helmOperator.create="true" \
@@ -176,17 +175,20 @@ and running:
   fluxctl identity
 ```
 
-Install fluxcli:
+Install [fluxctl](https://docs.fluxcd.io/en/stable/references/fluxctl.html):
 
 ```bash
-sudo wget -q -c https://github.com/fluxcd/flux/releases/download/1.14.0/fluxctl_linux_amd64 -O /usr/local/bin/fluxctl
-sudo chmod a+x /usr/local/bin/fluxctl
+if [ ! -x /usr/local/bin/fluxctl ]; then
+  sudo curl -L https://github.com/fluxcd/flux/releases/download/1.14.2/fluxctl_linux_amd64 -o /usr/local/bin/fluxctl
+  sudo chmod a+x /usr/local/bin/fluxctl
+fi
 ```
 
 Set the namespace (`flux`) where flux was installed for running `fluxctl`:
 
 ```bash
-export FLUX_FORWARD_NAMESPACE=flux
+export FLUX_FORWARD_NAMESPACE="flux"
+export FLUX_TIMEOUT="5m0s"
 ```
 
 Obtain the ssh public key through `fluxctl`:

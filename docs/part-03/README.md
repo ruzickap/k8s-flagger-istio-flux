@@ -19,7 +19,8 @@ envsubst < files/flux-repository/workloads/tekton-services.yaml  > tmp/k8s-flux-
 git -C tmp/k8s-flux-repository add --verbose .
 git -C tmp/k8s-flux-repository commit -m "Add Tekton"
 git -C tmp/k8s-flux-repository push -q
-sleep 60
+sleep 10 # Prevent errors like: Error: git repository git@github.com:ruzickap/k8s-flux-repository is not ready to sync (status: cloned)
+fluxctl sync
 ```
 
 Prepare pipelines

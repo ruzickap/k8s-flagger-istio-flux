@@ -60,7 +60,7 @@ spec:
       name: build-docker-image-from-git-task
     params:
     - name: pathToDockerFile
-      value: Dockerfile.ci
+      value: Dockerfile
     - name: pathToContext
       value: /workspace/docker-source/
     resources:

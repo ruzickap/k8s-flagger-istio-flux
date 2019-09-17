@@ -10,7 +10,7 @@ spec:
     - name: url
       value: https://github.com/stefanprodan/podinfo.git
     - name: revision
-      value: v1.7.0
+      value: 2.1.3
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
@@ -20,4 +20,4 @@ spec:
   type: image
   params:
     - name: url
-      value: pruzickak8smyexampledev.azurecr.io/library/podinfo:v1.7.0
+      value: pruzickak8smyexampledev.azurecr.io/library/podinfo:2.1.3
