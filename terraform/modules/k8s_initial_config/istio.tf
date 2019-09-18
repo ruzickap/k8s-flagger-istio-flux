@@ -39,14 +39,6 @@ resource "helm_release" "istio" {
   timeout    = 1000
 
   set {
-    name  = "gateways.istio-ingressgateway.autoscaleMax"
-    value = "1"
-  }
-  set {
-    name  = "gateways.istio-ingressgateway.autoscaleMin"
-    value = "1"
-  }
-  set {
     name  = "gateways.istio-ingressgateway.ports[0].name"
     value = "status-port"
   }
@@ -115,20 +107,12 @@ resource "helm_release" "istio" {
     value = "true"
   }
   set {
-    name  = "global.disablePolicyChecks"
-    value = "true"
-  }
-  set {
     name  = "global.k8sIngress.enableHttps"
     value = "true"
   }
   set {
     name  = "global.k8sIngress.enabled"
     value = "true"
-  }
-  set {
-    name  = "global.proxy.autoInject"
-    value = "disabled"
   }
   set {
     name  = "grafana.enabled"
@@ -159,21 +143,12 @@ resource "helm_release" "istio" {
     value = "100"
   }
   set {
-    name  = "sidecarInjectorWebhook.enableNamespacesByDefault"
-    value = "true"
-  }
-  set {
-    name  = "sidecarInjectorWebhook.enabled"
-    value = "true"
-  }
-  set {
     name  = "tracing.enabled"
     value = "true"
   }
 }
 
 data "template_file" "istio-gateway" {
-  depends_on = [helm_release.istio]
   template = file("${path.module}/files/istio-gateway.yaml.tmpl")
   vars = {
     letsencrypt_environment = var.letsencrypt_environment

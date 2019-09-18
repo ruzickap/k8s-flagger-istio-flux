@@ -35,7 +35,7 @@ variable "helm_external-dns_version" {
 }
 
 variable "helm_istio_version" {
-  default = "1.2.5"
+  default = "1.2.6"
 }
 
 variable "helm_kubed_version" {
