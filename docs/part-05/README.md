@@ -12,7 +12,7 @@ Output:
 namespace/default labeled
 ```
 
-Preapre the application manifest and save it to Git repository:
+Prepare the application manifest and save it to Git repository:
 
 ```bash
 cat << EOF > tmp/k8s-flux-repository/workloads/podinfo.yaml
@@ -199,7 +199,7 @@ Waiting for 22f3a9c to be applied ...
 Done.
 ```
 
-The appliacation should be ready.
+The application should be ready.
 Verify it's canary:
 
 ```bash
@@ -501,7 +501,7 @@ send-keys "while true ; do kubectl get canaries; sleep 3; done" C-m \; \
 set-option status off
 ```
 
-Generate few HTTP 500 errors during the podinfo migration to new version.
+Generate few HTTP 500 errors during the `podinfo` migration to new version.
 The migration to new version should be stopped.
 
 ```shell
