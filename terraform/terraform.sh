@@ -1,8 +1,8 @@
 #!/bin/bash -eu
 
-CLOUD_PLATFORM="${CLOUD_PLATFORM:-$(basename "$0" | sed 's/.*-\(.*\).sh/\1/')}"
+export CLOUD_PLATFORM="${CLOUD_PLATFORM:-azure}"
 export TF_VAR_cloud_platform="${TF_VAR_cloud_platform:-$CLOUD_PLATFORM}"
-LETSENCRYPT_ENVIRONMENT="${LETSENCRYPT_ENVIRONMENT:-staging}"
+export LETSENCRYPT_ENVIRONMENT="${LETSENCRYPT_ENVIRONMENT:-staging}"
 export TF_VAR_letsencrypt_environment="${TF_VAR_letsencrypt_environment:-$LETSENCRYPT_ENVIRONMENT}"
 readonly ARGS="$*"
 
