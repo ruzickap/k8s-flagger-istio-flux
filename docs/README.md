@@ -21,6 +21,7 @@
 * [Part 02 - Install Flux](part-02/README.md)
 * [Part 03 - Install Harbor using Flux and build containers](part-03/README.md)
 * [Part 04 - Install Flagger](part-04/README.md)
+* [Part 05 - Canary deployment using Flagger](part-05/README.md)
 
 ## Links
 
