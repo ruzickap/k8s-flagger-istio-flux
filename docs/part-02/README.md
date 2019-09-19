@@ -29,7 +29,7 @@ A git remote named 'origin' already exists and is set to push to 'ssh://git@gith
 https://github.com/ruzickap/k8s-flux-repository
 ```
 
-Clone newly create git repository:
+Clone the git repository:
 
 ```bash
 mkdir tmp
@@ -45,7 +45,7 @@ Cloning into 'k8s-flux-repository'...
 warning: You appear to have cloned an empty repository.
 ```
 
-Create initial flux repository structure and add it into the git repository:
+Create initial Flux repository structure and add it into the git repository:
 
 ```bash
 cp -v files/flux-repository/README.md tmp/k8s-flux-repository/

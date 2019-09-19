@@ -23,7 +23,7 @@ sleep 10 # Prevent errors like: Error: git repository git@github.com:ruzickap/k8
 fluxctl sync
 ```
 
-Prepare pipelines
+Prepare Tekton pipelines:
 
 ```bash
 envsubst < files/flux-repository/workloads/tekton-pipelineresource.yaml > tmp/k8s-flux-repository/workloads/tekton-pipelineresource.yaml
@@ -34,7 +34,7 @@ git -C tmp/k8s-flux-repository push -q
 fluxctl sync
 ```
 
-Initiate `PipelineRun` (docker image build form git repository):
+Initiate `PipelineRun` which builds container image form git repository:
 
 ```bash
 envsubst < files/flux-repository/workloads/tekton-pipelinerun.yaml      > tmp/k8s-flux-repository/workloads/tekton-pipelinerun.yaml

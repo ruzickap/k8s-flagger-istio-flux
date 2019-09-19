@@ -46,7 +46,7 @@ DEMO_PROMPT="${GREEN}➜ ${CYAN}$ "
 
 # ./run-k8s-full.sh
 
-[ ! -d .git ] && git clone --quiet https://github.com/ruzickap/k8s-postgresql && cd k8s-postgresql
+[ ! -d .git ] && git clone --quiet https://github.com/ruzickap/k8s-flagger-istio-flux && cd k8s-flagger-istio-flux
 
 sed -n '/^```bash$/,/^```$/p;/^-----$/p' docs/part-0{1..5}/README.md \
 | \
