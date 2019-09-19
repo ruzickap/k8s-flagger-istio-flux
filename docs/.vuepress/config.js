@@ -1,6 +1,6 @@
 module.exports = {
-  title: "Kubernetes + Flagger + Flux + Istio + Harbor",
-  description: "Kubernetes + Flagger + Flux + Istio + Harbor",
+  title: "Kubernetes + Flagger + Flux + Istio",
+  description: "Kubernetes + Flagger + Flux + Istio",
   base: '/k8s-flagger-istio-flux/',
   head: [
     ['link', { rel: "icon", href: "https://kubernetes.io/images/favicon.png" }]

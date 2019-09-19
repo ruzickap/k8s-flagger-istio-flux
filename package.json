@@ -1,12 +1,13 @@
 {
   "name": "k8s-flagger-istio-flux",
   "version": "0.0.1",
-  "description": "Install services using Flux + Istio + Gitlab + Harbor inside Kops cluster running on AWS",
+  "description": "Install services using Flux + Flagger + Istio + inside AKS cluster running in Azure",
   "author": "Petr Ruzicka <petr.ruzicka@gmail.com>",
   "license": "Apache-2.0",
   "homepage": "https://ruzickap.github.io/k8s-flagger-istio-flux",
   "keywords": [
-    "gitlab",
+    "flagger",
+    "flux",
     "flux",
     "kubernetes",
     "demo",
