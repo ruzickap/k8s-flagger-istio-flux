@@ -79,30 +79,6 @@ resource "helm_release" "istio" {
     value = "443"
   }
   set {
-    name  = "gateways.istio-ingressgateway.ports[3].name"
-    value = "postgresql"
-  }
-  set {
-    name  = "gateways.istio-ingressgateway.ports[3].nodePort"
-    value = "31400"
-  }
-  set {
-    name  = "gateways.istio-ingressgateway.ports[3].port"
-    value = "5432"
-  }
-  set {
-    name  = "gateways.istio-ingressgateway.ports[4].name"
-    value = "postgresql-repl"
-  }
-  set {
-    name  = "gateways.istio-ingressgateway.ports[4].nodePort"
-    value = "31401"
-  }
-  set {
-    name  = "gateways.istio-ingressgateway.ports[4].port"
-    value = "5433"
-  }
-  set {
     name  = "gateways.istio-ingressgateway.sds.enabled"
     value = "true"
   }
