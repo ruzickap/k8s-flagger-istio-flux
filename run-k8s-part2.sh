@@ -62,12 +62,12 @@ pe '"'"'/' \
 if [ "$#" -eq 0 ]; then
   ### Please run these commands before running the script
 
+  export MY_DOMAIN=${MY_DOMAIN:-myexample.dev}
   export LETSENCRYPT_ENVIRONMENT=${LETSENCRYPT_ENVIRONMENT:-staging}
   # export LETSENCRYPT_ENVIRONMENT="production" # Use with care - Let's Encrypt will generate real certificates
   export CLOUD_PLATFORM="${CLOUD_PLATFORM:-azure}"
   # ./run-k8s-part2.sh
 
-  export MY_DOMAIN="myexample.dev"
   export KUBECONFIG="$PWD/$(ls terraform/kubeconfig_*)"
   export FLUX_FORWARD_NAMESPACE=flux
 
@@ -78,6 +78,8 @@ if [ "$#" -eq 0 ]; then
 
   awk "/${MY_DOMAIN}/" /etc/hosts
   set +eux
+
+  echo "*** ${CLOUD_PLATFORM} | ${MY_DOMAIN} | ${LETSENCRYPT_ENVIRONMENT} | ${CLOUD_PLATFORM} | ${KUBECONFIG} ***"
 
   echo -e "\n\n*** Press ENTER to start\n"
   read A
