@@ -98,8 +98,8 @@ destroy_azure() {
 destroy_aws() {
   set -x
   # The k8s_initial_config module needs to be removed for because Terraform can
-  # not handle the modules dependecies (see aws.tf file for more details)
-  terraform destroy -target=module.k8s_initial_config -auto-approve
+  # not handle the modules dependencies (see aws.tf file for more details)
+  # terraform destroy -target=module.k8s_initial_config -auto-approve
   terraform destroy -auto-approve
   rm -rf .terraform
   aws s3 rm "s3://${BUCKET_NAME}/${KEY}"

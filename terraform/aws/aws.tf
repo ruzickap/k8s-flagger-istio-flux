@@ -48,7 +48,7 @@ resource "aws_key_pair" "key_pair" {
 }
 
 module "eks" {
-  source                = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=v5.1.0"
+  source                = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=v6.0.0"
   cluster_name          = "${var.prefix}-${var.kubernetes_cluster_name}-${replace(var.dns_zone_name, ".", "-")}-eks"
   subnets               = module.vpc.public_subnets
   vpc_id                = module.vpc.vpc_id
@@ -84,16 +84,16 @@ resource "local_file" "file" {
 # (Currently cluster is beeing destroyed before helm charts are removed which
 # is causing terraform dependency issues)
 
-module "k8s_initial_config" {
-  source = "../modules/k8s_initial_config"
-
-  accesskeyid                  = var.accesskeyid
-  cloud_platform               = var.cloud_platform
-  dns_zone_name                = var.dns_zone_name
-  kubeconfig                   = local_file.file.filename
-  full_kubernetes_cluster_name = dirname(module.eks.cluster_id)
-  letsencrypt_environment      = var.letsencrypt_environment
-  location                     = var.location
-  prefix                       = var.prefix
-  secret_access_key            = var.secret_access_key
-}
+# module "k8s_initial_config" {
+#   depends_on                   = [local_file.file]    #<-- this must be working
+#   source                       = "../modules/k8s_initial_config"
+#   accesskeyid                  = var.accesskeyid
+#   cloud_platform               = var.cloud_platform
+#   dns_zone_name                = var.dns_zone_name
+#   kubeconfig                   = local_file.file.filename
+#   full_kubernetes_cluster_name = dirname(module.eks.cluster_id)
+#   letsencrypt_environment      = var.letsencrypt_environment
+#   location                     = var.location
+#   prefix                       = var.prefix
+#   secret_access_key            = var.secret_access_key
+# }
