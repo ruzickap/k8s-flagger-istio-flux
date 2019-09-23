@@ -123,3 +123,16 @@ resource "null_resource" "cert-manager-certificate" {
     command = "kubectl delete --kubeconfig=${var.kubeconfig} -f -<<EOF\n${data.template_file.cert-manager-certificate.rendered}\nEOF"
   }
 }
+
+resource "null_resource" "cert-manager-certificate-label" {
+  depends_on = [null_resource.cert-manager-certificate]
+
+  provisioner "local-exec" {
+    command = "kubectl wait --kubeconfig=${var.kubeconfig} --for=condition=ready -n cert-manager certificate/ingress-cert-${var.letsencrypt_environment} --timeout=10m && kubectl annotate --kubeconfig=${var.kubeconfig} secret ingress-cert-${var.letsencrypt_environment} -n cert-manager kubed.appscode.com/sync='app=kubed'"
+  }
+
+  provisioner "local-exec" {
+    when = "destroy"
+    command = "kubectl annotate secret --kubeconfig=${var.kubeconfig} ingress-cert-${var.letsencrypt_environment} -n cert-manager kubed.appscode.com/sync-"
+  }
+}
