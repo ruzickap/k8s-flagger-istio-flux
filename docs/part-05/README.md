@@ -470,9 +470,9 @@ send-keys "\
   done
 " C-m \; \
 split-window -h -p 27 \; \
-send-keys "while true; do curl -s http://podinfo.${MY_DOMAIN} | jq .message; sleep 2; done" C-m \; \
+send-keys "while true; do curl -s http://podinfo.${MY_DOMAIN} | jq .message; sleep 3; done" C-m \; \
 split-window -v -p 50 \; \
-send-keys "while true; do kubectl get canary/podinfo -o json | jq .status; sleep 1; done" C-m \; \
+send-keys "while true; do kubectl get canary/podinfo -o json | jq .status; sleep 2; done" C-m \; \
 select-pane -t 0 \; \
 split-window -v -p 50 \; \
 send-keys "kubectl -n istio-system logs deployment/flagger -f | jq .msg" C-m \; \
@@ -521,9 +521,9 @@ send-keys "\
   done
 " C-m \; \
 split-window -h -p 27 \; \
-send-keys "while true; do curl -s http://podinfo.${MY_DOMAIN} | jq .message; sleep 2; done" C-m \; \
+send-keys "while true; do curl -s http://podinfo.${MY_DOMAIN} | jq .message; sleep 3; done" C-m \; \
 split-window -v -p 50 \; \
-send-keys "while true; do kubectl get canary/podinfo -o json | jq .status; sleep 1; done" C-m \; \
+send-keys "while true; do kubectl get canary/podinfo -o json | jq .status; sleep 2; done" C-m \; \
 select-pane -t 0 \; \
 split-window -v -p 50 \; \
 send-keys "kubectl -n istio-system logs deployment/flagger -f | jq .msg" C-m \; \

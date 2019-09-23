@@ -272,9 +272,9 @@ Create the k8s cluster with applications:
 
 ```bash
 cd terraform
-./terraform-${CLOUD_PLATFORM}.sh init
-./terraform-${CLOUD_PLATFORM}.sh plan
-./terraform-${CLOUD_PLATFORM}.sh apply -auto-approve
+./terraform.sh init
+./terraform.sh plan
+./terraform.sh apply -auto-approve
 cd ..
 ```
 

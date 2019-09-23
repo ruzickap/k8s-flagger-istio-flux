@@ -34,7 +34,7 @@ Remove AKS cluster:
 
 ```bash
 cd terraform
-./terraform-azure.sh destroy
+./terraform.sh destroy
 cd ..
 ```
 

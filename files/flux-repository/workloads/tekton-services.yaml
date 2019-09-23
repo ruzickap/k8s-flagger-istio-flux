@@ -14,8 +14,6 @@ spec:
       protocol: HTTP
     hosts:
     - tekton-dashboard.${MY_DOMAIN}
-    tls:
-      httpsRedirect: true
   - port:
       number: 443
       name: https-tekton-dashboard

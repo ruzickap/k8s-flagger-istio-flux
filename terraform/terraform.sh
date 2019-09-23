@@ -88,6 +88,7 @@ init_aws() {
 destroy_azure() {
   az login --service-principal --username "${ARM_CLIENT_ID}" --password "${ARM_CLIENT_SECRET}" --tenant "${ARM_TENANT_ID}" | jq
   set -x
+  terraform destroy -target=module.k8s_initial_config -auto-approve
   terraform destroy -auto-approve
   rm -rf .terraform
   az group delete --yes --name "${TF_VAR_resource_group_name}"
@@ -99,7 +100,7 @@ destroy_aws() {
   set -x
   # The k8s_initial_config module needs to be removed for because Terraform can
   # not handle the modules dependencies (see aws.tf file for more details)
-  # terraform destroy -target=module.k8s_initial_config -auto-approve
+  terraform destroy -target=module.k8s_initial_config -auto-approve
   terraform destroy -auto-approve
   rm -rf .terraform
   aws s3 rm "s3://${BUCKET_NAME}/${KEY}"
