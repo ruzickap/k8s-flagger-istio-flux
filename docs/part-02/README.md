@@ -188,7 +188,7 @@ Set the namespace (`flux`) where flux was installed for running `fluxctl`:
 
 ```bash
 export FLUX_FORWARD_NAMESPACE="flux"
-export FLUX_TIMEOUT="5m0s"
+export FLUX_TIMEOUT="10m0s"
 ```
 
 Obtain the ssh public key through `fluxctl`:
