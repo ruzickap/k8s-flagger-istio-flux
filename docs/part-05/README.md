@@ -204,6 +204,10 @@ should see the following application:
 
 ![Podinfo](./podinfo.png "Podinfo")
 
+```bash
+if [ -x /usr/bin/falkon ]; then falkon http://podinfo.${MY_DOMAIN} & fi
+```
+
 The application should be ready. Verify the canary deployment details:
 
 ```bash
@@ -436,6 +440,10 @@ You can see the details about the pipeline here: [https://tekton-dashboard.myexa
 
 ![Tekton Dashboard](./tekton-dashboard.png "Tekton Dashboard")
 
+```bash
+if [ -x /usr/bin/falkon ]; then falkon http://tekton-dashboard.${MY_DOMAIN} & fi
+```
+
 When the build completes the new version of the `podinfo` container image will
 appear in ACR:
 
@@ -451,11 +459,9 @@ canary deployment will start.
 Open pages in browser:
 
 ```bash
-if [ -x /usr/bin/chromium-browser ]; then
-  chromium-browser \
-    "http://flagger-grafana.${MY_DOMAIN}/d/flagger-istio/istio-canary?orgId=1&refresh=5s&var-namespace=default&var-primary=podinfo-primary&var-canary=podinfo" \
-    "http://grafana.${MY_DOMAIN}/d/UbsSZTDik/istio-workload-dashboard?orgId=1&refresh=5s&var-namespace=default&var-workload=podinfo-primary&var-srcns=All&var-srcwl=All&var-dstsvc=All" \
-    &
+if [ -x /usr/bin/falkon ]; then
+  falkon "http://flagger-grafana.${MY_DOMAIN}/d/flagger-istio/istio-canary?orgId=1&refresh=5s&var-namespace=default&var-primary=podinfo-primary&var-canary=podinfo" &
+  falkon "http://grafana.${MY_DOMAIN}/d/UbsSZTDik/istio-workload-dashboard?orgId=1&refresh=5s&var-namespace=default&var-workload=podinfo-primary&var-srcns=All&var-srcwl=All&var-dstsvc=All" &
 fi
 ```
 
