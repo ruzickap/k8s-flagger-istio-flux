@@ -4,6 +4,8 @@
 
 * GitHub repository: [https://github.com/ruzickap/k8s-flagger-istio-flux](https://github.com/ruzickap/k8s-flagger-istio-flux)
 * Web Pages: [https://ruzickap.github.io/k8s-flagger-istio-flux](https://ruzickap.github.io/k8s-flagger-istio-flux)
+* Asciinema: [https://asciinema.org/a/270663](https://asciinema.org/a/270663)
+* YouTube: [https://youtu.be/ot4SvFZWJuE](https://youtu.be/ot4SvFZWJuE)
 
 ## Requirements
 
