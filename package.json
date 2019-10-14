@@ -31,6 +31,6 @@
     "@vuepress/plugin-medium-zoom": "^1.2.0",
     "vuepress-plugin-seo": "^0.1.2",
     "vuepress-plugin-reading-progress": "^1.0.7",
-    "vuepress-plugin-smooth-scroll": "^0.0.3"
+    "vuepress-plugin-smooth-scroll": "^0.0.6"
   }
 }
