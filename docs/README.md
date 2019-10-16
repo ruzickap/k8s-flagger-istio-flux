@@ -1,6 +1,6 @@
 # Kubernetes + Flagger + Flux + Istio
 
-[![Build Status](https://travis-ci.com/ruzickap/k8s-flagger-istio-flux.svg?branch=master)](https://travis-ci.com/ruzickap/k8s-flagger-istio-flux)
+[![Build Status](https://github.com/ruzickap/k8s-flagger-istio-flux/workflows/vuepress-build/badge.svg)](https://github.com/ruzickap/k8s-flagger-istio-flux/actions?workflow=vuepress-build)
 
 * GitHub repository: [https://github.com/ruzickap/k8s-flagger-istio-flux](https://github.com/ruzickap/k8s-flagger-istio-flux)
 * Web Pages: [https://ruzickap.github.io/k8s-flagger-istio-flux](https://ruzickap.github.io/k8s-flagger-istio-flux)
