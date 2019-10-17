@@ -76,7 +76,6 @@ jobs:
         cp LICENSE docs/.vuepress/dist
         ln -s docs/.vuepress/dist ${GITHUB_REPOSITORY##*/}
         sed -e "s@(part-@(https://github.com/${GITHUB_REPOSITORY}/tree/master/docs/part-@" -e 's@.\/.vuepress\/public\/@./@' docs/README.md > docs/.vuepress/dist/README.md
-        touch docs/.vuepress/dist/.nojekyll
 
     - name: "Check links"
       run: |
