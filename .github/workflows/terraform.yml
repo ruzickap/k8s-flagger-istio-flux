@@ -1,0 +1,52 @@
+name: 'Terraform Pull Request Workflow'
+
+on:
+  pull_request:
+    paths:
+    - '.github/**'
+    - 'terraform/**'
+  push:
+    branches: [master]
+    paths:
+    - '.github/**'
+    - 'terraform/**'
+
+jobs:
+  terraform-check:
+    name: 'Terraform Actions'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@master
+
+      - name: 'Terraform Format'
+        uses: hashicorp/terraform-github-actions@v0.6.1
+        with:
+          tf_actions_version: 0.12.13
+          tf_actions_subcommand: 'fmt'
+          tf_actions_working_dir: 'terraform/azure'
+          tf_actions_comment: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 'Terraform Init'
+        uses: hashicorp/terraform-github-actions@v0.6.1
+        with:
+          tf_actions_version: 0.12.13
+          tf_actions_subcommand: 'init'
+          tf_actions_working_dir: 'terraform/azure'
+          tf_actions_comment: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TF_CLI_ARGS_init: '-backend=false'
+
+      - name: 'Terraform Validate'
+        uses: hashicorp/terraform-github-actions@v0.6.1
+        with:
+          tf_actions_version: 0.12.13
+          tf_actions_subcommand: 'validate'
+          tf_actions_working_dir: 'terraform/azure'
+          tf_actions_comment: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
