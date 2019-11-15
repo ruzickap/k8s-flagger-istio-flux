@@ -87,7 +87,7 @@ jobs:
         EOF
         sudo caddy -quiet &
         go get -u github.com/raviqqe/muffet
-        ~/go/bin/muffet --skip-tls-verification --exclude "${EXCLUDE_WEB_PAGES}" https://${GITHUB_REPOSITORY%/*}.github.io/${GITHUB_REPOSITORY##*/}
+        ~/go/bin/muffet --concurrency=10 --skip-tls-verification --exclude "${EXCLUDE_WEB_PAGES}" https://${GITHUB_REPOSITORY%/*}.github.io/${GITHUB_REPOSITORY##*/}
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2.5.0
