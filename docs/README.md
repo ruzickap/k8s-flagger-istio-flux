@@ -35,6 +35,7 @@
 * [AWS Container Day - Weaveworks Partner Demo](https://youtu.be/IV5VXkAzPw0)
 * [OSS Unboxing - SMI Traffic Split](https://youtu.be/e5kv9E48Bac)
 * [SMI Istio Canary Deployments](https://docs.flagger.app/tutorials/flagger-smi-istio)
+* [EKS GitOps challenge](https://eks.handson.flagger.dev/)
 
 ![Flux logo](https://raw.githubusercontent.com/fluxcd/flux/18e5174581f44ed8c9a881dd5071179eed1ebf4d/docs/_files/flux-logo-vertical.svg?sanitize=true
 "Flux logo")
