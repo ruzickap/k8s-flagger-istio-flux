@@ -7,6 +7,10 @@ update_configs:
     version_requirement_updates: "auto"
     default_assignees:
       - "ruzickap"
+    automerged_updates:
+      - match:
+          dependency_type: "all"
+          update_type: "all"
     # Allow all direct dependencies to be updated, only allow indirect
     # dependencies to update when there's a security release.
     allowed_updates:
