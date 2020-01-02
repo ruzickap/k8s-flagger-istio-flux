@@ -11,6 +11,8 @@ on:
       - package.json
       - package-lock.json
   push:
+    branches:
+      - master
     paths:
       - .github/workflows/vuepress-build-check-deploy.yml
       - docs/**
