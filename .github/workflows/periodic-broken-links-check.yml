@@ -1,0 +1,15 @@
+name: periodic-broken-links-check
+
+on:
+  schedule:
+    - cron: '10 10 * * 3'
+
+jobs:
+  broken-link-checker:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Broken link checker
+        run: |
+          export INPUT_URL="https://${GITHUB_REPOSITORY%/*}.github.io/${GITHUB_REPOSITORY##*/}"
+          export INPUT_CMD_PARAMS="--buffer-size=8192 --concurrency=10 --exclude=(myexample.dev|mylabs.dev|https://github.com/ruzickap/k8s-flux-repository)"
+          wget -qO- https://raw.githubusercontent.com/ruzickap/action-broken-link-checker/v1/entrypoint.sh | bash

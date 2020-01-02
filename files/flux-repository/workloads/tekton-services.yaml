@@ -8,23 +8,23 @@ spec:
   selector:
     istio: ingressgateway
   servers:
-  - port:
-      number: 80
-      name: http-tekton-dashboard
-      protocol: HTTP
-    hosts:
-    - tekton-dashboard.${MY_DOMAIN}
-  - port:
-      number: 443
-      name: https-tekton-dashboard
-      protocol: HTTPS
-    hosts:
-    - tekton-dashboard.${MY_DOMAIN}
-    tls:
-      credentialName: ingress-cert-${LETSENCRYPT_ENVIRONMENT}
-      mode: SIMPLE
-      privateKey: sds
-      serverCertificate: sds
+    - port:
+        number: 80
+        name: http-tekton-dashboard
+        protocol: HTTP
+      hosts:
+        - tekton-dashboard.${MY_DOMAIN}
+    - port:
+        number: 443
+        name: https-tekton-dashboard
+        protocol: HTTPS
+      hosts:
+        - tekton-dashboard.${MY_DOMAIN}
+      tls:
+        credentialName: ingress-cert-${LETSENCRYPT_ENVIRONMENT}
+        mode: SIMPLE
+        privateKey: sds
+        serverCertificate: sds
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -33,12 +33,12 @@ metadata:
   namespace: tekton-pipelines
 spec:
   hosts:
-  - tekton-dashboard.${MY_DOMAIN}
+    - tekton-dashboard.${MY_DOMAIN}
   gateways:
-  - tekton-dashboard-gateway
+    - tekton-dashboard-gateway
   http:
-  - route:
-    - destination:
-        host: tekton-dashboard.tekton-pipelines.svc.cluster.local
-        port:
-          number: 9097
+    - route:
+        - destination:
+          host: tekton-dashboard.tekton-pipelines.svc.cluster.local
+          port:
+            number: 9097

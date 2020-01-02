@@ -1,0 +1,87 @@
+name: vuepress-build-check-deploy
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - .github/workflows/vuepress-build-check-deploy.yml
+      - docs/**
+      - .markdownlint.yml
+      - .spelling
+      - package.json
+      - package-lock.json
+  push:
+    paths:
+      - .github/workflows/vuepress-build-check-deploy.yml
+      - docs/**
+      - .markdownlint.yml
+      - .spelling
+      - package.json
+      - package-lock.json
+
+jobs:
+  markdownlint-check:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: markdownlint-cli
+        uses: nosborn/github-action-markdown-cli@v1.1.1
+        with:
+          files: .
+          config_file: .markdownlint.yml
+
+  markdown-spell-check:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Install markdown-spellcheck
+        run: npm install -g markdown-spellcheck
+
+      - name: Run mdspell
+        run: find . -type f -name "*.md" | xargs --max-args=1 --verbose  mdspell --ignore-numbers --ignore-acronyms --report --en-gb
+
+  vuepress-build-check-deploy:
+    runs-on: ubuntu-18.04
+    needs:
+      - markdownlint-check
+      - markdown-spell-check
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Install VuePress and build the document
+        run: |
+          npm install
+          npm run build
+          cp LICENSE docs/.vuepress/dist
+          sed -e "s@(part-@(https://github.com/${GITHUB_REPOSITORY}/tree/master/docs/part-@" -e 's@.\/.vuepress\/public\/@./@' docs/README.md > docs/.vuepress/dist/README.md
+
+      - name: Check broken links
+        env:
+          INPUT_URL: https://${{ github.event.repository.owner.name }}.github.io/${{ github.event.repository.name }}
+          INPUT_PAGES_PATH: .
+          INPUT_CMD_PARAMS: --buffer-size=8192 --concurrency=10 --skip-tls-verification --exclude=(myexample.dev|mylabs.dev|https://github.com/ruzickap/k8s-flux-repository)
+        run: |
+          ln -s docs/.vuepress/dist ${{ github.event.repository.name }}
+          wget -qO- https://raw.githubusercontent.com/ruzickap/action-broken-link-checker/v1/entrypoint.sh | bash
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v2.8.0
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./docs/.vuepress/dist
+        with:
+          forceOrphan: true

@@ -1,0 +1,11 @@
+extends: default
+
+rules:
+  # 80 chars should be enough, but don't fail if a line is longer
+  line-length:
+    max: 80
+    level: warning
+
+ignore: |
+  files/flux-repository/workloads/tekton-dashboard.yaml
+  files/flux-repository/workloads/tekton.yaml

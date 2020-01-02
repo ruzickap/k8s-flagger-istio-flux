@@ -50,23 +50,23 @@ metadata:
   name: build-docker-image-from-git-pipeline
 spec:
   resources:
-  - name: docker-source
-    type: git
-  - name: builtImage
-    type: image
+    - name: docker-source
+      type: git
+    - name: builtImage
+      type: image
   tasks:
-  - name: build-docker-image-from-git-task-run
-    taskRef:
-      name: build-docker-image-from-git-task
-    params:
-    - name: pathToDockerFile
-      value: Dockerfile
-    - name: pathToContext
-      value: /workspace/docker-source/
-    resources:
-      inputs:
-      - name: docker-source
-        resource: docker-source
-      outputs:
-      - name: builtImage
-        resource: builtImage
+    - name: build-docker-image-from-git-task-run
+      taskRef:
+        name: build-docker-image-from-git-task
+      params:
+        - name: pathToDockerFile
+          value: Dockerfile
+        - name: pathToContext
+          value: /workspace/docker-source/
+      resources:
+        inputs:
+          - name: docker-source
+            resource: docker-source
+        outputs:
+          - name: builtImage
+            resource: builtImage
