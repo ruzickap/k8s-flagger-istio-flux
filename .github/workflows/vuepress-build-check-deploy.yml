@@ -76,7 +76,7 @@ jobs:
           INPUT_CMD_PARAMS: --buffer-size=8192 --concurrency=10 --skip-tls-verification --exclude=(myexample.dev|mylabs.dev|https://github.com/ruzickap/k8s-flux-repository)
         run: |
           ln -s docs/.vuepress/dist ${{ github.event.repository.name }}
-          wget -qO- https://raw.githubusercontent.com/ruzickap/action-broken-link-checker/v1/entrypoint.sh | bash
+          wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v1/entrypoint.sh | bash
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v2.8.0
