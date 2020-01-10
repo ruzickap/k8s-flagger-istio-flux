@@ -1,0 +1,36 @@
+name: periodic-broken-link-checks
+
+on:
+  schedule:
+    - cron: '8 8 * * 2'
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - .github/workflows/periodic-broken-link-checks.yml
+  push:
+    branches:
+      - master
+    paths:
+      - .github/workflows/periodic-broken-link-checks.yml
+
+jobs:
+  broken-link-checker:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+      - name: Broken link checker
+        env:
+          EXCLUDE: |
+            github.com/ruzickap/k8s-flux-repository
+            myexample.dev
+            mylabs.dev
+        run: |
+          if [ -s CNAME ]; then
+            export INPUT_URL="https://$(cat CNAME)"
+          else
+            export INPUT_URL="https://${GITHUB_REPOSITORY%/*}.github.io/${GITHUB_REPOSITORY##*/}"
+          fi
+          export INPUT_CMD_PARAMS="--verbose --buffer-size=8192 --concurrency=10 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v1/entrypoint.sh | bash
