@@ -1,14 +1,22 @@
 # demo-magic.sh script
 demo-magic.sh
+
 # Kubernetes kubeconfig file
 kubeconfig.conf
-# Ignore temporary README.sh script
+
+# README.sh script
 README.sh
-# ignore builded pages by Vuepress
+
+# Vuepress Pages
 docs/.vuepress/dist
-# ignore tmp directory
-tmp
+
+# tmp directory
+tmp/
+
 # Node modules
-node_modules
-# Ignore Terraform
+node_modules/
+
+# Terraform files
 .terraform
+*.tfstate*
+crash.log
