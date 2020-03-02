@@ -20,6 +20,4 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: yamllint
-        uses: ibiqlik/action-yamllint@master
-        with:
-          file_or_dir: .
+        uses: ibiqlik/action-yamllint@v1
