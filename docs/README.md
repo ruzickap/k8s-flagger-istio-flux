@@ -34,7 +34,7 @@
 * [Automated canary deployments with Flagger and Istio](https://medium.com/google-cloud/automated-canary-deployments-with-flagger-and-istio-ac747827f9d1)
 * [AWS Container Day - Weaveworks Partner Demo](https://youtu.be/IV5VXkAzPw0)
 * [OSS Unboxing - SMI Traffic Split](https://youtu.be/e5kv9E48Bac)
-* [SMI Istio Canary Deployments](https://docs.flagger.app/tutorials/flagger-smi-istio)
+* [SMI Istio Canary Deployments](https://github.com/weaveworks/flagger/blob/b6958733e19e9d1ec348613f4d86d58e5cac6e88/docs/gitbook/tutorials/flagger-smi-istio.md)
 * [EKS GitOps challenge](https://eks.handson.flagger.dev/)
 
 ![Flux logo](https://raw.githubusercontent.com/fluxcd/flux/18e5174581f44ed8c9a881dd5071179eed1ebf4d/docs/_files/flux-logo-vertical.svg?sanitize=true
