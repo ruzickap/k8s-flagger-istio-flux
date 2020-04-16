@@ -175,7 +175,7 @@ and running:
   fluxctl identity
 ```
 
-Install [fluxctl](https://docs.fluxcd.io/en/stable/references/fluxctl.html):
+Install [fluxctl](https://docs.fluxcd.io/en/stable/references/fluxctl/):
 
 ```bash
 if [ ! -x /usr/local/bin/fluxctl ]; then
