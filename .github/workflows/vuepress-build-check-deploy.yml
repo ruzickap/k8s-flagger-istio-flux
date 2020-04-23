@@ -23,7 +23,7 @@ on:
 
 jobs:
   markdownlint-check:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
@@ -34,7 +34,7 @@ jobs:
           config_file: .markdownlint.yml
 
   markdown-spell-check:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
@@ -50,7 +50,7 @@ jobs:
         run: find . -type f -name "*.md" | xargs --max-args=1 --verbose  mdspell --ignore-numbers --ignore-acronyms --report --en-gb
 
   vuepress-build-check-deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     needs:
       - markdownlint-check
       - markdown-spell-check
