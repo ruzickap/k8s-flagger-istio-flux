@@ -117,7 +117,7 @@ cmdline() {
       ;;
     *)
       set -x
-      terraform $@
+      terraform "$@"
       ;;
   esac
 }

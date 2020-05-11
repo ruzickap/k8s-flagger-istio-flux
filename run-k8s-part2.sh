@@ -6,6 +6,7 @@ set -eu
 # include the magic
 ################################################
 test -s ./demo-magic.sh || curl --silent https://raw.githubusercontent.com/paxtonhare/demo-magic/master/demo-magic.sh > demo-magic.sh
+# shellcheck disable=SC1091
 . ./demo-magic.sh
 
 ################################################
@@ -15,7 +16,7 @@ test -s ./demo-magic.sh || curl --silent https://raw.githubusercontent.com/paxto
 #
 # speed at which to simulate typing. bigger num = faster
 #
-TYPE_SPEED=60
+export TYPE_SPEED=60
 
 # Uncomment to run non-interactively
 export PROMPT_TIMEOUT=0
@@ -29,7 +30,7 @@ export NO_WAIT=false
 # see http://www.tldp.org/HOWTO/Bash-Prompt-HOWTO/bash-prompt-escape-sequences.html for escape sequences
 #
 #DEMO_PROMPT="${GREEN}➜ ${CYAN}\W "
-DEMO_PROMPT="${GREEN}➜ ${CYAN}$ "
+export DEMO_PROMPT="${GREEN}➜ ${CYAN}$ "
 
 # hide the evidence
 #clear
@@ -45,16 +46,11 @@ DEMO_PROMPT="${GREEN}➜ ${CYAN}$ "
 
 [ ! -d .git ] && git clone --quiet https://github.com/ruzickap/k8s-flagger-istio-flux && cd k8s-flagger-istio-flux
 
-sed -n '/^```bash$/,/^```$/p;/^-----$/p' docs/part-0{4,5}/README.md \
+sed -n "/^\`\`\`bash.*/,/^\`\`\`$/p;/^-----$/p" docs/part-0{4,5}/README.md \
 | \
 sed \
-  -e 's/^-----$/\
-p  ""\
-p  "################################################################################################### Press <ENTER> to continue"\
-wait\
-/' \
-  -e 's/^```bash.*/\
-pe '"'"'/' \
+  -e 's/^-----$/\np  ""\np  "################################################################################################### Press <ENTER> to continue"\nwait\n/' \
+  -e 's/^```bash.*/\npe '"'"'/' \
   -e 's/^```$/'"'"'/' \
 > README.sh
 
@@ -68,10 +64,11 @@ if [ "$#" -eq 0 ]; then
   export CLOUD_PLATFORM="${CLOUD_PLATFORM:-azure}"
   # ./run-k8s-part2.sh
 
-  export KUBECONFIG="$PWD/$(ls terraform/kubeconfig_*)"
+  KUBECONFIG="$PWD/$(ls terraform/kubeconfig_*)"
+  export KUBECONFIG
   export FLUX_FORWARD_NAMESPACE=flux
 
-  if [ -z ${ARM_CLIENT_ID} ] || [ -z ${ARM_CLIENT_SECRET} ] || [ -z ${ARM_SUBSCRIPTION_ID} ] || [ -z ${ARM_TENANT_ID} ]; then
+  if [ -z "${ARM_CLIENT_ID}" ] || [ -z "${ARM_CLIENT_SECRET}" ] || [ -z "${ARM_SUBSCRIPTION_ID}" ] || [ -z "${ARM_TENANT_ID}" ]; then
     echo -e "\n*** One of the mandatory variables is not set !!\n";
     exit 1
   fi
@@ -82,10 +79,11 @@ if [ "$#" -eq 0 ]; then
   echo "*** ${CLOUD_PLATFORM} | ${MY_DOMAIN} | ${LETSENCRYPT_ENVIRONMENT} | ${CLOUD_PLATFORM} | ${KUBECONFIG} ***"
 
   echo -e "\n\n*** Press ENTER to start\n"
-  read A
+  read -r
 
   # hide the evidence
   clear
+  # shellcheck disable=SC1091
   source README.sh
 else
   cat README.sh
