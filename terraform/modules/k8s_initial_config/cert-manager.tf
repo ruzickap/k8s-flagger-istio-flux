@@ -22,7 +22,7 @@ resource "null_resource" "cert-manager-crds" {
   }
 
   provisioner "local-exec" {
-    when = "destroy"
+    when    = "destroy"
     command = "kubectl delete --kubeconfig=${var.kubeconfig} -f ${data.http.crd_cert-manager.url}"
   }
 }
@@ -58,7 +58,7 @@ resource "kubernetes_secret" "secret" {
   }
   data = {
     # Azure DNS client secret (for Azure DNS)
-    CLIENT_SECRET     = var.client_secret
+    CLIENT_SECRET = var.client_secret
     # AWS Secret access key (for Route53)
     secret-access-key = var.secret_access_key
   }
@@ -67,8 +67,8 @@ resource "kubernetes_secret" "secret" {
 data "template_file" "cert-manager-clusterissuer" {
   template = file("${path.module}/files/cert-manager-${var.cloud_platform}-clusterissuer.yaml.tmpl")
   vars = {
-    email                   = var.email
-    hostedZoneName          = var.dns_zone_name
+    email          = var.email
+    hostedZoneName = var.dns_zone_name
     # Azure DNS access credentials (for Azure DNS)
     clientID                = var.client_id
     resourceGroupName       = var.resource_group_name
@@ -76,8 +76,8 @@ data "template_file" "cert-manager-clusterissuer" {
     subscriptionID          = var.subscription_id
     tenantID                = var.tenant_id
     # AWS Access key (for Route53)
-    accesskeyid             = var.accesskeyid
-    location                = var.location
+    accesskeyid = var.accesskeyid
+    location    = var.location
   }
 }
 
@@ -93,7 +93,7 @@ resource "null_resource" "cert-manager-clusterissuer" {
   }
 
   provisioner "local-exec" {
-    when = "destroy"
+    when    = "destroy"
     command = "kubectl delete --kubeconfig=${var.kubeconfig} -f -<<EOF\n${data.template_file.cert-manager-clusterissuer.rendered}\nEOF"
   }
 }
@@ -119,7 +119,7 @@ resource "null_resource" "cert-manager-certificate" {
   }
 
   provisioner "local-exec" {
-    when = "destroy"
+    when    = "destroy"
     command = "kubectl delete --kubeconfig=${var.kubeconfig} -f -<<EOF\n${data.template_file.cert-manager-certificate.rendered}\nEOF"
   }
 }
@@ -132,7 +132,7 @@ resource "null_resource" "cert-manager-certificate-label" {
   }
 
   provisioner "local-exec" {
-    when = "destroy"
+    when    = "destroy"
     command = "kubectl annotate secret --kubeconfig=${var.kubeconfig} ingress-cert-${var.letsencrypt_environment} -n cert-manager kubed.appscode.com/sync-"
   }
 }
