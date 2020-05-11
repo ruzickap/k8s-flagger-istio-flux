@@ -27,6 +27,7 @@ resource "kubernetes_cluster_role_binding" "tiller" {
 }
 
 provider "helm" {
+  version = "0.10.4"
   service_account = kubernetes_service_account.tiller.metadata.0.name
   debug           = true
   kubernetes {
