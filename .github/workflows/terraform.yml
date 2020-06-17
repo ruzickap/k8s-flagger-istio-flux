@@ -17,7 +17,7 @@ jobs:
   terraform-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.0
 
       - name: Terraform Format
         uses: hashicorp/terraform-github-actions@v0.8.0
