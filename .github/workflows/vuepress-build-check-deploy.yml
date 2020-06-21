@@ -68,13 +68,13 @@ jobs:
           npm install
           npm run build
           cp LICENSE docs/.vuepress/dist
-          sed -e "s@(part-@(https://github.com/${GITHUB_REPOSITORY}/tree/master/docs/part-@" -e 's@.\/.vuepress\/public\/@./@' docs/README.md > docs/.vuepress/dist/README.md
+          sed -e "s@(part-@(https://github.com/${{ github.repository }}/tree/master/docs/part-@" -e 's@.\/.vuepress\/public\/@./@' docs/README.md > docs/.vuepress/dist/README.md
 
       - name: Check broken links
         env:
-          INPUT_URL: https://${{ github.event.repository.owner.name }}.github.io/${{ github.event.repository.name }}
+          INPUT_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
           INPUT_PAGES_PATH: .
-          INPUT_CMD_PARAMS: --buffer-size=8192 --concurrency=10 --skip-tls-verification --exclude=(myexample.dev|mylabs.dev|https://github.com/ruzickap/k8s-flux-repository)
+          INPUT_CMD_PARAMS: --buffer-size=8192 --concurrency=10 --skip-tls-verification --exclude=(myexample.dev|mylabs.dev|${{ github.html_url }})
         run: |
           ln -s docs/.vuepress/dist ${{ github.event.repository.name }}
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v1/entrypoint.sh | bash
