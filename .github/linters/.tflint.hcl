@@ -1,3 +1,0 @@
-config {
-  module = false
-}
