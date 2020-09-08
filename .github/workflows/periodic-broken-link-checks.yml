@@ -17,6 +17,10 @@ jobs:
   broken-link-checker:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+
       - name: Broken link checker
         env:
           EXCLUDE: |
