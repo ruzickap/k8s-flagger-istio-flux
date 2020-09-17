@@ -1,5 +1,21 @@
 # Changelog
 
+## [v0.1.0](https://github.com/ruzickap/k8s-flagger-istio-flux/compare/v0.0.1...v0.1.0) (2020-09-17)
+
+- Add actions/checkout with gh-pages to periodic-broken-link-checks.yml [`#63`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/63)
+- Remove checkout action from periodic-broken-link-checks [`#53`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/53)
+- Replace markdown linter [`#50`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/50)
+- Add super-linter [`#45`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/45)
+- Fix GH variables to pass the tests [`#44`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/44)
+- Move to GitHub's Dependabot [`#33`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/33)
+- Use shell-linter in latest version [`#32`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/32)
+- Bump @vuepress/plugin-back-to-top from 1.4.1 to 1.5.0 [`#27`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/27)
+- Bump @vuepress/plugin-medium-zoom from 1.4.1 to 1.5.0 [`#29`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/29)
+- Bump vuepress from 1.4.1 to 1.5.0 [`#28`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/28)
+- Fix markdown check [`#30`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/30)
+- Fix Terraform formatting [`#26`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/26)
+- CHANGELOG file update [`#25`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/25)
+
 ## v0.0.1 (2020-05-11)
 
 - Fix terrafrom - pin versions [`6bbb7a8`](https://github.com/ruzickap/k8s-flagger-istio-flux/commit/6bbb7a8bcd1df530510cb995594f60e974ac3d4b)
