@@ -33,5 +33,5 @@ jobs:
           else
             export INPUT_URL="https://${GITHUB_REPOSITORY%/*}.github.io/${GITHUB_REPOSITORY##*/}"
           fi
-          export INPUT_CMD_PARAMS="--verbose --buffer-size=8192 --concurrency=10 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          export INPUT_CMD_PARAMS="--verbose --buffer-size=8192 --max-connections=10 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v1/entrypoint.sh | bash
