@@ -73,10 +73,10 @@ jobs:
         env:
           INPUT_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
           INPUT_PAGES_PATH: .
-          INPUT_CMD_PARAMS: --buffer-size=8192 --max-connections=10 --skip-tls-verification --exclude=(myexample.dev|mylabs.dev|${{ github.html_url }})
+          INPUT_CMD_PARAMS: --verbose --buffer-size=8192 --max-connections=10 --color=always --skip-tls-verification --exclude=(myexample.dev|mylabs.dev|${{ github.html_url }})
         run: |
           ln -s docs/.vuepress/dist ${{ github.event.repository.name }}
-          wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v1/entrypoint.sh | bash
+          wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
