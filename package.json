@@ -28,7 +28,7 @@
   "dependencies": {
     "vuepress": "^1.8.2",
     "@vuepress/plugin-back-to-top": "^1.8.1",
-    "@vuepress/plugin-medium-zoom": "^1.8.1",
+    "@vuepress/plugin-medium-zoom": "^1.8.2",
     "vuepress-plugin-seo": "^0.1.4",
     "vuepress-plugin-reading-progress": "^1.0.10",
     "vuepress-plugin-smooth-scroll": "^0.0.10"
