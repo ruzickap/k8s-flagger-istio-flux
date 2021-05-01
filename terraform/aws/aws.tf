@@ -9,20 +9,16 @@ module "vpc" {
   public_subnets       = ["10.0.1.0/24", "10.0.2.0/24"]
   enable_dns_hostnames = true
 
-  tags = "${
-    merge(
-      var.tags,
-      map("kubernetes.io/cluster/${var.prefix}-${var.kubernetes_cluster_name}-${replace(var.dns_zone_name, ".", "-")}-eks", "shared"),
-    )
-  }"
+  tags = merge(
+    var.tags,
+    map("kubernetes.io/cluster/${var.prefix}-${var.kubernetes_cluster_name}-${replace(var.dns_zone_name, ".", "-")}-eks", "shared"),
+  )
 
-  public_subnet_tags = "${
-    merge(
-      var.tags,
-      map("kubernetes.io/cluster/${var.prefix}-${var.kubernetes_cluster_name}-${replace(var.dns_zone_name, ".", "-")}-eks", "shared"),
-      map("kubernetes.io/role/elb", "1"),
-    )
-  }"
+  public_subnet_tags = merge(
+    var.tags,
+    map("kubernetes.io/cluster/${var.prefix}-${var.kubernetes_cluster_name}-${replace(var.dns_zone_name, ".", "-")}-eks", "shared"),
+    map("kubernetes.io/role/elb", "1"),
+  )
 }
 
 resource "aws_security_group" "security_group" {

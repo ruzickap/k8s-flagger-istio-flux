@@ -13,7 +13,7 @@ resource "azurerm_kubernetes_cluster" "kubernetes_cluster" {
     admin_username = var.admin_username
 
     ssh_key {
-      key_data = "${file("${var.ssh_public_key}")}"
+      key_data = file("${var.ssh_public_key}")
     }
   }
 

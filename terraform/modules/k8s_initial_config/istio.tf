@@ -16,7 +16,7 @@ data "helm_repository" "repository_istio" {
 resource "helm_release" "istio-init" {
   depends_on = [kubernetes_cluster_role_binding.tiller]
   name       = "istio-init"
-  repository = "${data.helm_repository.repository_istio.metadata.0.name}"
+  repository = data.helm_repository.repository_istio.metadata.0.name
   chart      = "istio-init"
   version    = var.helm_istio_version
   namespace  = kubernetes_namespace.namespace_istio-system.id
@@ -32,7 +32,7 @@ resource "null_resource" "istio-init-delay" {
 resource "helm_release" "istio" {
   depends_on = [null_resource.istio-init-delay]
   name       = "istio"
-  repository = "${data.helm_repository.repository_istio.metadata.0.name}"
+  repository = data.helm_repository.repository_istio.metadata.0.name
   chart      = "istio"
   version    = var.helm_istio_version
   namespace  = kubernetes_namespace.namespace_istio-system.id

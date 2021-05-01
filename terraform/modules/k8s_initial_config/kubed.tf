@@ -6,7 +6,7 @@ data "helm_repository" "repository_kubed" {
 resource "helm_release" "kubed" {
   depends_on = [kubernetes_cluster_role_binding.tiller]
   name       = "kubed"
-  repository = "${data.helm_repository.repository_kubed.metadata.0.name}"
+  repository = data.helm_repository.repository_kubed.metadata.0.name
   chart      = "kubed"
   version    = var.helm_kubed_version
   namespace  = "kubed"
@@ -17,6 +17,6 @@ resource "helm_release" "kubed" {
   }
   set {
     name  = "config.clusterName"
-    value = "${var.full_kubernetes_cluster_name}"
+    value = var.full_kubernetes_cluster_name
   }
 }
