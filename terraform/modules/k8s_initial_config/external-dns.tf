@@ -53,7 +53,7 @@ resource "helm_release" "external-dns" {
   }
   set {
     name  = "resourceGroup"
-    value = "${var.resource_group_name_dns}"
+    value = var.resource_group_name_dns
   }
   set {
     name  = "domainFilters"
@@ -81,6 +81,6 @@ resource "helm_release" "external-dns" {
   }
   set {
     name  = "txtOwnerId"
-    value = "${var.full_kubernetes_cluster_name}"
+    value = var.full_kubernetes_cluster_name
   }
 }

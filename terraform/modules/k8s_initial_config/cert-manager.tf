@@ -35,7 +35,7 @@ data "helm_repository" "repository_cert-manager" {
 resource "helm_release" "cert-manager" {
   depends_on = [null_resource.cert-manager-crds, kubernetes_cluster_role_binding.tiller]
   name       = "cert-manager"
-  repository = "${data.helm_repository.repository_cert-manager.metadata.0.name}"
+  repository = data.helm_repository.repository_cert-manager.metadata.0.name
   chart      = "cert-manager"
   version    = var.helm_cert-manager_version
   namespace  = kubernetes_namespace.namespace_cert-manager.id
