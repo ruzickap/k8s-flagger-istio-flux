@@ -47,7 +47,7 @@ jobs:
         run: npm install -g markdown-spellcheck
 
       - name: Run mdspell
-        run: find . -type f \( -name "*.md" ! -name "CHANGELOG.md" \) | xargs --max-args=1 --verbose mdspell --ignore-numbers --ignore-acronyms --report --en-gb
+        run: find . -type f \( -name "*.md" ! -name "CHANGELOG.md" \) -print0 | xargs -0 --max-args=1 --verbose mdspell --ignore-numbers --ignore-acronyms --report --en-gb
 
   vuepress-build-check-deploy:
     runs-on: ubuntu-latest
@@ -73,14 +73,14 @@ jobs:
         env:
           INPUT_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
           INPUT_PAGES_PATH: .
-          INPUT_CMD_PARAMS: --verbose --buffer-size=8192 --max-connections=10 --color=always --skip-tls-verification --exclude=(myexample.dev|mylabs.dev|${{ github.html_url }})
+          INPUT_CMD_PARAMS: --buffer-size=8192 --max-connections=10 --color=always --skip-tls-verification --exclude=(myexample.dev|mylabs.dev|github.com/ruzickap/k8s-flux-repository)
         run: |
           ln -s docs/.vuepress/dist ${{ github.event.repository.name }}
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        if: ${{ github.event_name }} == 'push' && github.ref == 'refs/heads/master'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/.vuepress/dist
