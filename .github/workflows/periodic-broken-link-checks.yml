@@ -1,17 +1,9 @@
 name: periodic-broken-link-checks
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '8 8 * * 2'
-  pull_request:
-    types: [opened, synchronize]
-    paths:
-      - .github/workflows/periodic-broken-link-checks.yml
-  push:
-    branches:
-      - master
-    paths:
-      - .github/workflows/periodic-broken-link-checks.yml
 
 jobs:
   broken-link-checker:
