@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.1.1](https://github.com/ruzickap/k8s-flagger-istio-flux/compare/v0.1.0...v0.1.1) (2021-12-20)
+
+- Improve GH Action files [`#92`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/92)
+- Update npm [`#91`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/91)
+- Fix linter issues [`#90`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/90)
+- Use new terraform syntax [`#89`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/89)
+- Upgrade GH Actions versions [`#88`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/88)
+- npm update [`#87`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/87)
+- Upgrade action-my-broken-link-checker [`#76`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/76)
+- Fix My Broken Link Checker parameter [`#66`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/66)
+- Update package-lock.json [`#65`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/65)
+
 ## [v0.1.0](https://github.com/ruzickap/k8s-flagger-istio-flux/compare/v0.0.1...v0.1.0) (2020-09-17)
 
 - Add actions/checkout with gh-pages to periodic-broken-link-checks.yml [`#63`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/63)
@@ -14,7 +26,6 @@
 - Bump vuepress from 1.4.1 to 1.5.0 [`#28`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/28)
 - Fix markdown check [`#30`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/30)
 - Fix Terraform formatting [`#26`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/26)
-- CHANGELOG file update [`#25`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/25)
 
 ## v0.0.1 (2020-05-11)
 
