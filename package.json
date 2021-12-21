@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@vuepress/plugin-back-to-top": "^1.8.3",
-    "@vuepress/plugin-medium-zoom": "^1.8.2",
+    "@vuepress/plugin-medium-zoom": "^1.8.3",
     "vuepress": "^1.8.2",
     "vuepress-plugin-reading-progress": "^1.0.10",
     "vuepress-plugin-seo": "^0.1.4",
