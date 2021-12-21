@@ -81,7 +81,7 @@ These steps should be done only once
 Create Service Principal and authenticate to Azure - this should be done only
 once for the new Azure accounts:
 
-* [Azure Provider: Authenticating using a Service Principal with a Client Secret](https://www.terraform.io/docs/providers/azurerm/authenticating_via_service_principal.html)
+* [Azure Provider: Authenticating using a Service Principal with a Client Secret](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/guides/service_principal_client_secret)
 
 * [Install and configure Terraform to provision VMs and other infrastructure into Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/terraform-install-configure)
 
