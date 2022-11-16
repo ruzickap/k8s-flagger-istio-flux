@@ -54,6 +54,8 @@ jobs:
     needs:
       - markdownlint-check
       - markdown-spell-check
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v2
 
