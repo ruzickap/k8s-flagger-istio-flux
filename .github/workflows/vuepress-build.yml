@@ -1,0 +1,53 @@
+name: vuepress-build
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/vuepress-build.yml
+      - docs/**
+      - package.json
+      - package-lock.json
+
+permissions:
+  contents: write
+
+jobs:
+  vuepress-build:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Install Node.js
+        uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8 # v4.0.1
+        with:
+          node-version: 16.x
+
+      - name: Install VuePress and build the document
+        run: |
+          npm install
+          npm run build
+          cp LICENSE docs/.vuepress/dist
+          sed -e "s@(part-@(https://github.com/${{ github.repository }}/tree/main/docs/part-@" -e 's@.\/.vuepress\/public\/@./@' docs/README.md > docs/.vuepress/dist/README.md
+          ln -s docs/.vuepress/dist ${{ github.event.repository.name }}
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@1f0c5cde4bc74cd7e1254d0cb4de8d49e9068c7d # v4.0.0
+
+      - name: Check broken links
+        uses: ruzickap/action-my-broken-link-checker@a0895a4cda23b5c90999cb9d3c8a8f44d8a8980d # v2.5.0
+        with:
+          url: ${{ steps.pages.outputs.base_url }}
+          pages_path: .
+          cmd_params: '--exclude=(mylabs.dev) --buffer-size=8192 --max-connections-per-host=5 --color=always --rate-limit=5 --header="User-Agent:Mozilla" --skip-tls-verification'
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@373f7f263a76c20808c831209c920827a82a2847 # v3.9.3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/.vuepress/dist
+          force_orphan: true

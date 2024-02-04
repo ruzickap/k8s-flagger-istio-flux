@@ -53,7 +53,7 @@ init_azure() {
   # Azure login
   az login --service-principal --username "${ARM_CLIENT_ID}" --password "${ARM_CLIENT_SECRET}" --tenant "${ARM_TENANT_ID}" | jq
 
-  if ! az group show -g "${TF_VAR_resource_group_name}" &>/dev/null; then
+  if ! az group show -g "${TF_VAR_resource_group_name}" &> /dev/null; then
     # Create resource group
     az group create --name "${TF_VAR_resource_group_name}" --location "${TF_VAR_location}" | jq
 
@@ -75,7 +75,7 @@ init_azure() {
 
 init_aws() {
   set -eux
-  if ! aws s3api head-bucket --bucket "${BUCKET_NAME}" 2>/dev/null; then
+  if ! aws s3api head-bucket --bucket "${BUCKET_NAME}" 2> /dev/null; then
     aws s3api create-bucket --bucket "${BUCKET_NAME}" --create-bucket-configuration LocationConstraint="${AWS_DEFAULT_REGION}" | jq
     aws s3api put-bucket-encryption --bucket "${BUCKET_NAME}" --server-side-encryption-configuration='{"Rules":[{"ApplyServerSideEncryptionByDefault":{"SSEAlgorithm":"AES256"}}]}'
   fi
@@ -109,16 +109,16 @@ destroy_aws() {
 
 cmdline() {
   case "${ARGS}" in
-    init)
-      "init_${CLOUD_PLATFORM}"
-      ;;
-    destroy)
-      "destroy_${CLOUD_PLATFORM}"
-      ;;
-    *)
-      set -x
-      terraform "$@"
-      ;;
+  init)
+    "init_${CLOUD_PLATFORM}"
+    ;;
+  destroy)
+    "destroy_${CLOUD_PLATFORM}"
+    ;;
+  *)
+    set -x
+    terraform "$@"
+    ;;
   esac
 }
 

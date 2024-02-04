@@ -1,0 +1,13 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "https://github.com/ruzickap/k8s-flux-repository"
+    },
+    {
+      "pattern": "(https|http)://.*.myexample.dev"
+    },
+    {
+      "pattern": "https://.*.mylabs.dev"
+    }
+  ]
+}

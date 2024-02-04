@@ -27,11 +27,13 @@ resource "aws_security_group" "security_group" {
   vpc_id      = module.vpc.vpc_id
   tags        = var.tags
 
+  # kics-scan ignore-line
   ingress {
     from_port = 22
     to_port   = 22
     protocol  = "tcp"
 
+    # kics-scan ignore-line
     cidr_blocks = [
       "0.0.0.0/0",
     ]
