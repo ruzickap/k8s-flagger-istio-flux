@@ -10,7 +10,7 @@
 ## Requirements
 
 * [az](https://docs.microsoft.com/en-us/cli/azure/)
-* [Azure account](https://azure.microsoft.com/account/)
+* [Azure account](https://azure.microsoft.com/en-us/get-started/azure-portal/)
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 * [terraform](https://www.terraform.io/)
 * [hub](https://hub.github.com/)

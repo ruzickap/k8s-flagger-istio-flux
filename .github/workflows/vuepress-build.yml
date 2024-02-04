@@ -42,7 +42,7 @@ jobs:
         with:
           url: ${{ steps.pages.outputs.base_url }}
           pages_path: .
-          cmd_params: '--exclude=(mylabs.dev) --buffer-size=8192 --max-connections-per-host=5 --color=always --rate-limit=5 --header="User-Agent:Mozilla" --skip-tls-verification'
+          cmd_params: '--exclude=(mylabs.dev|myexample.dev|github.com/ruzickap/k8s-flux-repository|azure.microsoft.com) --buffer-size=8192 --max-connections-per-host=5 --color=always --rate-limit=5 --header="User-Agent:Mozilla" --skip-tls-verification'
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@373f7f263a76c20808c831209c920827a82a2847 # v3.9.3
