@@ -29,13 +29,11 @@
 * [https://github.com/justinbarrick/fluxcloud](https://github.com/justinbarrick/fluxcloud)
 * [https://github.com/stefanprodan/openfaas-flux](https://github.com/stefanprodan/openfaas-flux)
 * [https://github.com/fluxcd/helm-operator-get-started](https://github.com/fluxcd/helm-operator-get-started)
-* [Traffic Shifting patterns with Solo.io Gloo Gateway and Weaveworks Flagger](https://youtu.be/UhgKsLc3NEQ)
 * [https://github.com/stefanprodan/gitops-istio](https://github.com/stefanprodan/gitops-istio)
 * [Automated canary deployments with Flagger and Istio](https://medium.com/google-cloud/automated-canary-deployments-with-flagger-and-istio-ac747827f9d1)
 * [AWS Container Day - Weaveworks Partner Demo](https://youtu.be/IV5VXkAzPw0)
 * [OSS Unboxing - SMI Traffic Split](https://youtu.be/e5kv9E48Bac)
 * [SMI Istio Canary Deployments](https://github.com/weaveworks/flagger/blob/b6958733e19e9d1ec348613f4d86d58e5cac6e88/docs/gitbook/tutorials/flagger-smi-istio.md)
-* [EKS GitOps challenge](https://eks.handson.flagger.dev/)
 
 ![Flux logo](https://raw.githubusercontent.com/fluxcd/flux/18e5174581f44ed8c9a881dd5071179eed1ebf4d/docs/_files/flux-logo-vertical.svg?sanitize=true
 "Flux logo")

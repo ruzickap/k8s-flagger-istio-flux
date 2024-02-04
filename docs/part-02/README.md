@@ -33,7 +33,7 @@ Clone the git repository:
 
 ```bash
 mkdir tmp
-if [ ! -n "$(grep "^github.com " ~/.ssh/known_hosts)" ]; then ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null; fi
+if [ ! -n "$(grep "^github.com " ~/.ssh/known_hosts)" ]; then ssh-keyscan github.com >> ~/.ssh/known_hosts 2> /dev/null; fi
 git config --global user.email "petr.ruzicka@gmail.com"
 git -C tmp clone git@github.com:ruzickap/k8s-flux-repository.git
 ```

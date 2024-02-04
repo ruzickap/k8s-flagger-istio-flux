@@ -13,8 +13,7 @@ spec:
         description: The path to the dockerfile to build
         default: /workspace/docker-source/Dockerfile
       - name: pathToContext
-        description:
-          The build context used by Kaniko
+        description: The build context used by Kaniko
           (https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)
         default: /workspace/docker-source
   outputs:

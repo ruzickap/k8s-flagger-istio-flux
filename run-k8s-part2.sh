@@ -46,14 +46,12 @@ export DEMO_PROMPT="${GREEN}➜ ${CYAN}$ "
 
 [ ! -d .git ] && git clone --quiet https://github.com/ruzickap/k8s-flagger-istio-flux && cd k8s-flagger-istio-flux
 
-sed -n "/^\`\`\`bash.*/,/^\`\`\`$/p;/^-----$/p" docs/part-0{4,5}/README.md \
-| \
-sed \
-  -e 's/^-----$/\np  ""\np  "################################################################################################### Press <ENTER> to continue"\nwait\n/' \
-  -e 's/^```bash.*/\npe '"'"'/' \
-  -e 's/^```$/'"'"'/' \
-> README.sh
-
+sed -n "/^\`\`\`bash.*/,/^\`\`\`$/p;/^-----$/p" docs/part-0{4,5}/README.md |
+  sed \
+    -e 's/^-----$/\np  ""\np  "################################################################################################### Press <ENTER> to continue"\nwait\n/' \
+    -e 's/^```bash.*/\npe '"'"'/' \
+    -e 's/^```$/'"'"'/' \
+    > README.sh
 
 if [ "$#" -eq 0 ]; then
   ### Please run these commands before running the script
@@ -69,7 +67,7 @@ if [ "$#" -eq 0 ]; then
   export FLUX_FORWARD_NAMESPACE=flux
 
   if [ -z "${ARM_CLIENT_ID}" ] || [ -z "${ARM_CLIENT_SECRET}" ] || [ -z "${ARM_SUBSCRIPTION_ID}" ] || [ -z "${ARM_TENANT_ID}" ]; then
-    echo -e "\n*** One of the mandatory variables is not set !!\n";
+    echo -e "\n*** One of the mandatory variables is not set !!\n"
     exit 1
   fi
 

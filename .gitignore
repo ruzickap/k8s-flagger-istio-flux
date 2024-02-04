@@ -1,26 +1,25 @@
 # pre-commit configuration file
 .pre-commit-config.yaml
 
-# release-it configuration file
-.release-it.yml
-
-# demo-magic.sh script
-demo-magic.sh
-
 # Kubernetes kubeconfig file
-kubeconfig.conf
-
-# README.sh script
-README.sh
+kubeconfig*.conf*
 
 # Vuepress Pages
 docs/.vuepress/dist
+docs/.vuepress/.temp/
+docs/.vuepress/.cache/
 
 # tmp directory
 tmp/
 
 # Node modules
 node_modules/
+
+# README.sh script
+README.sh
+
+# demo-magic.sh script
+demo-magic.sh
 
 # Terraform files
 .terraform
