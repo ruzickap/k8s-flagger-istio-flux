@@ -2,7 +2,7 @@ data "aws_availability_zones" "availability_zones" {
 }
 
 module "vpc" {
-  source               = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=v2.15.0"
+  source               = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=v5.5.1"
   name                 = "${var.prefix}-${var.kubernetes_cluster_name}.${var.dns_zone_name}-vpc"
   cidr                 = "10.0.0.0/16"
   azs                  = [data.aws_availability_zones.availability_zones.names[0], data.aws_availability_zones.availability_zones.names[1]]
