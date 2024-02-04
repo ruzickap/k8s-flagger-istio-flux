@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.0](https://github.com/ruzickap/k8s-flagger-istio-flux/compare/v0.1.1...v0.2.0) (2024-02-04)
+
+
+### Features
+
+* **gha:** unify GHA - renovate, megalinter, markdown, and others ([#141](https://github.com/ruzickap/k8s-flagger-istio-flux/issues/141)) ([290b068](https://github.com/ruzickap/k8s-flagger-istio-flux/commit/290b068c46132cd050e60d63a7fd7e53f76dbc8e))
+
+
+### Bug Fixes
+
+* **build:** fix link check in build process ([#152](https://github.com/ruzickap/k8s-flagger-istio-flux/issues/152)) ([9702418](https://github.com/ruzickap/k8s-flagger-istio-flux/commit/97024187c1cdb829a00251ef9615246930bbcdf1))
+* **tf:** terraform upgrade ([#150](https://github.com/ruzickap/k8s-flagger-istio-flux/issues/150)) ([9eb9068](https://github.com/ruzickap/k8s-flagger-istio-flux/commit/9eb906855228619973cd445eb3441e1728f9ebff))
+
 ## [v0.1.1](https://github.com/ruzickap/k8s-flagger-istio-flux/compare/v0.1.0...v0.1.1) (2021-12-20)
 
 - Improve GH Action files [`#92`](https://github.com/ruzickap/k8s-flagger-istio-flux/pull/92)
