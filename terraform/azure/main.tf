@@ -1,5 +1,5 @@
 terraform {
-  required_version = "1.7.2"
+  required_version = "0.12.31"
 
   backend "azurerm" {
     key = "terraform.tfstate"
