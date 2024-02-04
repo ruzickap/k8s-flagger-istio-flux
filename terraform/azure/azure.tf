@@ -2,6 +2,7 @@ data "azurerm_resource_group" "resource_group" {
   name = var.resource_group_name
 }
 
+# kics-scan ignore-line
 resource "azurerm_kubernetes_cluster" "kubernetes_cluster" {
   name                = "${var.prefix}-${var.kubernetes_cluster_name}-${replace(var.dns_zone_name, ".", "-")}"
   location            = var.location

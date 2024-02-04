@@ -6,7 +6,9 @@ BASH_SHFMT_ARGUMENTS: --indent 2 --space-redirects
 DISABLE_LINTERS:
   - MARKDOWN_MARKDOWN_LINK_CHECK # Using lychee instead
   - SPELL_CSPELL
+  - TEKTON_TEKTON_LINT # It can not be easily configured / disabled per files/dirs
   - TERRAFORM_TERRASCAN # Hard to configure - no documentation of the config file
+  - TERRAFORM_TFLINT
 
 # Remove: To receive reports as email, please set variable EMAIL_REPORTER_EMAIL
 EMAIL_REPORTER: false

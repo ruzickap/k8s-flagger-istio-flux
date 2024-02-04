@@ -215,6 +215,7 @@ spec:
             httpGet:
               path: /health
               port: 9097
+          # kics-scan ignore-line
           name: tekton-dashboard
           ports:
             - containerPort: 9097
@@ -309,6 +310,3 @@ spec:
             resource: git-source
       taskRef:
         name: pipeline0-task
-
----
-

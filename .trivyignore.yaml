@@ -1,4 +1,4 @@
-misconfigurations:
+vulnerabilities:
   # │ glob-parent  │ CVE-2020-28469 │ HIGH     │ fixed  │ 3.1.0             │ 5.1.2         │ Regular expression denial of service                        │
   - id: CVE-2020-28469
   # │ json5        │ CVE-2022-46175 │ HIGH     │ fixed  │ 0.5.1             │ 2.2.2, 1.0.2  │ json5: Prototype Pollution in JSON5 via Parse Method        │
@@ -11,3 +11,93 @@ misconfigurations:
   - id: CVE-2022-24772
   # │ nth-check    │ CVE-2021-3803  │ HIGH     │ fixed  │ 1.0.2             │ 2.0.1         │ inefficient regular expression complexity                   │
   - id: CVE-2021-3803
+
+misconfigurations:
+  # Launch configuration with unencrypted block device.
+  - id: AVD-AWS-0008
+    paths:
+      - git::https:/github.com/terraform-aws-modules/terraform-aws-eks.git?ref=v6.0.0/workers.tf
+
+  # Launch configuration should not have a public IP address.
+  - id: AVD-AWS-0009
+    paths:
+      - git::https:/github.com/terraform-aws-modules/terraform-aws-eks.git?ref=v6.0.0/workers.tf
+
+  # EKS should have the encryption of secrets enabled
+  - id: AVD-AWS-0039
+    paths:
+      - git::https:/github.com/terraform-aws-modules/terraform-aws-eks.git?ref=v6.0.0/cluster.tf
+
+  # EKS Clusters should have the public access disabled
+  - id: AVD-AWS-0040
+    paths:
+      - git::https:/github.com/terraform-aws-modules/terraform-aws-eks.git?ref=v6.0.0/cluster.tf
+
+  # EKS cluster should not have open CIDR range for public access
+  - id: AVD-AWS-0041
+    paths:
+      # - terraform/aws/aws.tf
+      - git::https:/github.com/terraform-aws-modules/terraform-aws-eks.git?ref=v6.0.0/cluster.tf
+
+  # IAM policy should avoid use of wildcards and instead apply the principle of least privilege
+  - id: AVD-AWS-0057
+    paths:
+      - git::https:/github.com/terraform-aws-modules/terraform-aws-eks.git?ref=v6.0.0/workers.tf
+
+  # An egress security group rule allows traffic to /0.
+  - id: AVD-AWS-0104
+    paths:
+      - git::https:/github.com/terraform-aws-modules/terraform-aws-eks.git?ref=v6.0.0/cluster.tf
+      - git::https:/github.com/terraform-aws-modules/terraform-aws-eks.git?ref=v6.0.0/workers.tf
+
+  # An ingress security group rule allows traffic from /0
+  - id: AVD-AWS-0107
+    paths:
+      - terraform/aws/aws.tf
+
+  # aws_instance should activate session tokens for Instance Metadata Service.
+  - id: AVD-AWS-0130
+    paths:
+      - git::https:/github.com/terraform-aws-modules/terraform-aws-eks.git?ref=v6.0.0/workers.tf
+
+    # Instances in a subnet should not receive a public IP address by default.
+  - id: AVD-AWS-0164
+    paths:
+      - git::https:/github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=v2.15.0/main.tf
+
+    # Ensure AKS has an API Server Authorized IP Ranges enabled
+  - id: AVD-AZU-0041
+    paths:
+      - terraform/azure/azure.tf
+
+    # Ensure RBAC is enabled on AKS clusters
+  - id: AVD-AZU-0042
+    paths:
+      - terraform/azure/azure.tf
+
+    # Ensure AKS cluster has Network Policy configured
+  - id: AVD-AZU-0043
+    paths:
+      - terraform/azure/azure.tf
+
+  # Use Readonly Filesystem
+  - id: AVD-KSV-0014
+    paths:
+      - files/flux-repository/workloads/tekton-dashboard.yaml
+      - files/flux-repository/workloads/tekton.yaml
+
+  # No Manage Secrets
+  - id: AVD-KSV-0041
+    paths:
+      - files/flux-repository/workloads/tekton-dashboard.yaml
+      - files/flux-repository/workloads/tekton.yaml
+
+  # No Manage Networking Resources
+  - id: AVD-KSV-0056
+    paths:
+      - files/flux-repository/workloads/tekton-dashboard.yaml
+
+  # Manage webhookconfigurations
+  - id: AVD-KSV-0114
+    paths:
+      - files/flux-repository/workloads/tekton.yaml

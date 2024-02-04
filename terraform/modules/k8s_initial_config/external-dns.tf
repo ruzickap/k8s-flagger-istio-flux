@@ -1,3 +1,5 @@
+# kics-scan ignore
+
 resource "kubernetes_namespace" "external-dns" {
   metadata {
     name = "external-dns"

@@ -4,7 +4,10 @@
       "pattern": "https://github.com/ruzickap/k8s-flux-repository"
     },
     {
-      "pattern": ".*myexample.dev.*"
+      "pattern": "(https|http)://.*.myexample.dev"
+    },
+    {
+      "pattern": "https://.*.mylabs.dev"
     }
   ]
 }

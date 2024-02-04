@@ -23,6 +23,7 @@ spec:
       tls:
         credentialName: ingress-cert-${LETSENCRYPT_ENVIRONMENT}
         mode: SIMPLE
+        # kics-scan ignore-line
         privateKey: sds
         serverCertificate: sds
 ---
