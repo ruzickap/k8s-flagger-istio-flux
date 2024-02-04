@@ -46,7 +46,7 @@ resource "aws_key_pair" "key_pair" {
 }
 
 module "eks" {
-  source                = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=v6.0.0"
+  source                = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=v6.0.2"
   cluster_name          = "${var.prefix}-${var.kubernetes_cluster_name}-${replace(var.dns_zone_name, ".", "-")}-eks"
   subnets               = module.vpc.public_subnets
   vpc_id                = module.vpc.vpc_id
