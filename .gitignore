@@ -1,27 +1,28 @@
 # pre-commit configuration file
 .pre-commit-config.yaml
 
-# Kubernetes kubeconfig file
-kubeconfig*.conf*
+# demo-magic.sh script
+demo-magic.sh
 
 # Vuepress Pages
 docs/.vuepress/dist
-docs/.vuepress/.temp/
-docs/.vuepress/.cache/
 
-# tmp directory
-tmp/
+# Kubernetes kubeconfig file
+kubeconfig*.conf*
 
 # Node modules
 node_modules/
 
+# nohup output
+nohup.out
+
 # README.sh script
 README.sh
 
-# demo-magic.sh script
-demo-magic.sh
+# tmp directory
+tmp/
 
 # Terraform files
-.terraform
+.terraform*
 *.tfstate*
 crash.log

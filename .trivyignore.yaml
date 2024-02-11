@@ -1,16 +1,20 @@
 vulnerabilities:
-  # │ glob-parent  │ CVE-2020-28469 │ HIGH     │ fixed  │ 3.1.0             │ 5.1.2         │ Regular expression denial of service                        │
+  # │ glob-parent   │ CVE-2020-28469 │ HIGH     │ fixed    │ 3.1.0             │ 5.1.2               │ Regular expression denial of service                        │
   - id: CVE-2020-28469
-  # │ json5        │ CVE-2022-46175 │ HIGH     │ fixed  │ 0.5.1             │ 2.2.2, 1.0.2  │ json5: Prototype Pollution in JSON5 via Parse Method        │
+  # │ json5         │ CVE-2022-46175 │ HIGH     │ fixed    │ 0.5.1             │ 2.2.2, 1.0.2        │ json5: Prototype Pollution in JSON5 via Parse Method        │
   - id: CVE-2022-46175
-  # │ loader-utils │ CVE-2022-37601 │ CRITICAL │ fixed  │ 0.2.17            │ 2.0.3, 1.4.1  │ loader-utils: prototype pollution in function parseQuery in │
+  # │ loader-utils  │ CVE-2022-37601 │ CRITICAL │ fixed    │ 0.2.17            │ 2.0.3, 1.4.1        │ loader-utils: prototype pollution in function parseQuery in │
   - id: CVE-2022-37601
-  # │ node-forge   │ CVE-2022-24771 │ HIGH     │ fixed  │ 0.10.0            │ 1.3.0         │ node-forge: Signature verification leniency in checking     │
+  # │ node-forge    │ CVE-2022-24771 │ HIGH     │ fixed    │ 0.10.0            │ 1.3.0               │ node-forge: Signature verification leniency in checking     │
   - id: CVE-2022-24771
-  # │ node-forge   │ CVE-2022-24772 │ HIGH     │ fixed  │ 0.10.0            │ 1.3.0         │ node-forge: Signature verification failing to check tailing │
+  # │ node-forge    │ CVE-2022-24772 │ HIGH     │ fixed    │ 0.10.0            │ 1.3.0               │ node-forge: Signature verification failing to check tailing │
   - id: CVE-2022-24772
-  # │ nth-check    │ CVE-2021-3803  │ HIGH     │ fixed  │ 1.0.2             │ 2.0.1         │ inefficient regular expression complexity                   │
+  # │ nth-check     │ CVE-2021-3803  │ HIGH     │ fixed    │ 1.0.2             │ 2.0.1               │ inefficient regular expression complexity                   │
   - id: CVE-2021-3803
+  # | ip            │ CVE-2023-42282 │ HIGH     │ affected │ 1.1.8             │                     │ An issue in NPM IP Package v.1.1.8 and before allows an     │
+  - id: CVE-2023-42282
+  # │ normalize-url │ CVE-2021-33502 │ HIGH     │ fixed    │ 4.5.0             │ 4.5.1, 5.3.1, 6.0.1 │ ReDoS for data URLs                                         │
+  - id: CVE-2021-33502
 
 misconfigurations:
   # Launch configuration with unencrypted block device.
