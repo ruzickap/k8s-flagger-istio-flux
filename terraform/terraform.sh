@@ -109,16 +109,16 @@ destroy_aws() {
 
 cmdline() {
   case "${ARGS}" in
-  init)
-    "init_${CLOUD_PLATFORM}"
-    ;;
-  destroy)
-    "destroy_${CLOUD_PLATFORM}"
-    ;;
-  *)
-    set -x
-    terraform "$@"
-    ;;
+    init)
+      "init_${CLOUD_PLATFORM}"
+      ;;
+    destroy)
+      "destroy_${CLOUD_PLATFORM}"
+      ;;
+    *)
+      set -x
+      terraform "$@"
+      ;;
   esac
 }
 

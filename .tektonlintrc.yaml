@@ -1,0 +1,5 @@
+globs:
+  - "files/flux-repository/workloads/**"
+
+rules:
+  no-resourceversion: warning
