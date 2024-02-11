@@ -52,10 +52,6 @@ variable "location" {
   default = "eu-central-1"
 }
 
-variable "prefix" {
-  default = "mytest"
-}
-
 variable "resource_group_name" {
   default = "terraform_resource_group_name"
 }
