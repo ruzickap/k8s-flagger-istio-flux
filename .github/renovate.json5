@@ -13,6 +13,10 @@
   "git-submodules": {
     enabled: true,
   },
+  ignorePaths: [
+    // Ignore Terraform files
+    "terraform/**",
+  ],
   labels: [
     "renovate",
     "renovate/{{replace '.*/' '' depName}}",
