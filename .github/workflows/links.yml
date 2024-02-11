@@ -1,4 +1,5 @@
-name: Links
+---
+name: links
 
 on:
   workflow_dispatch:
@@ -12,7 +13,7 @@ on:
 permissions: read-all
 
 jobs:
-  linkChecker:
+  links:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
