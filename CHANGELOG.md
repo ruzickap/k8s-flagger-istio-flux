@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.3.0](https://github.com/ruzickap/k8s-flagger-istio-flux/compare/v0.2.0...v0.3.0) (2024-03-27)
+
+
+### Features
+
+* **gh:** add default GitHub repo files ([#157](https://github.com/ruzickap/k8s-flagger-istio-flux/issues/157)) ([5028012](https://github.com/ruzickap/k8s-flagger-istio-flux/commit/5028012241c0bd49ddab1561c1594c6084fa8d08))
+* **gh:** add default GitHub repo files ([#158](https://github.com/ruzickap/k8s-flagger-istio-flux/issues/158)) ([66eb1d2](https://github.com/ruzickap/k8s-flagger-istio-flux/commit/66eb1d22eacc3a7b9284525d993c56d811f4aff7))
+
+
+### Bug Fixes
+
+* **renovate:** skip terraform updates ([#154](https://github.com/ruzickap/k8s-flagger-istio-flux/issues/154)) ([88eadfa](https://github.com/ruzickap/k8s-flagger-istio-flux/commit/88eadfaf47869ba451ff5bc3788d0f80396e1ecb))
+* **tekton:** fix tekton configuration ([#156](https://github.com/ruzickap/k8s-flagger-istio-flux/issues/156)) ([12a12d7](https://github.com/ruzickap/k8s-flagger-istio-flux/commit/12a12d7f845a98a6f8bb70fb75b920dcd16ad037))
+
 ## [0.2.0](https://github.com/ruzickap/k8s-flagger-istio-flux/compare/v0.1.1...v0.2.0) (2024-02-04)
 
 
