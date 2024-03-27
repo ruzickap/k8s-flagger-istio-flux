@@ -62,22 +62,22 @@ misconfigurations:
     paths:
       - git::https:/github.com/terraform-aws-modules/terraform-aws-eks.git?ref=v6.0.0/workers.tf
 
-    # Instances in a subnet should not receive a public IP address by default.
+  # Instances in a subnet should not receive a public IP address by default.
   - id: AVD-AWS-0164
     paths:
       - git::https:/github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=v2.15.0/main.tf
 
-    # Ensure AKS has an API Server Authorized IP Ranges enabled
+  # Ensure AKS has an API Server Authorized IP Ranges enabled
   - id: AVD-AZU-0041
     paths:
       - terraform/azure/azure.tf
 
-    # Ensure RBAC is enabled on AKS clusters
+  # Ensure RBAC is enabled on AKS clusters
   - id: AVD-AZU-0042
     paths:
       - terraform/azure/azure.tf
 
-    # Ensure AKS cluster has Network Policy configured
+  # Ensure AKS cluster has Network Policy configured
   - id: AVD-AZU-0043
     paths:
       - terraform/azure/azure.tf
