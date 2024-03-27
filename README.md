@@ -1,0 +1,39 @@
+# Kubernetes + Flagger + Flux + Istio
+
+[![Build Status](https://github.com/ruzickap/k8s-flagger-istio-flux/workflows/vuepress-build/badge.svg)](https://github.com/ruzickap/k8s-flagger-istio-flux)
+
+* GitHub repository: [https://github.com/ruzickap/k8s-flagger-istio-flux](https://github.com/ruzickap/k8s-flagger-istio-flux)
+* Web Pages: [https://ruzickap.github.io/k8s-flagger-istio-flux](https://ruzickap.github.io/k8s-flagger-istio-flux)
+* Asciinema: [https://asciinema.org/a/270663](https://asciinema.org/a/270663)
+* YouTube: [https://youtu.be/ot4SvFZWJuE](https://youtu.be/ot4SvFZWJuE)
+
+## Requirements
+
+* [az](https://docs.microsoft.com/en-us/cli/azure/)
+* [Azure account](https://azure.microsoft.com/en-us/get-started/azure-portal/)
+* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+* [terraform](https://www.terraform.io/)
+* [hub](https://hub.github.com/)
+* Kubernetes, Docker, Linux, AWS knowledge required
+
+## Content
+
+* [Part 01 - Create AKS cluster in Azure](https://github.com/ruzickap/k8s-flagger-istio-flux/tree/main/docs/part-01/README.md)
+* [Part 02 - Install Flux](https://github.com/ruzickap/k8s-flagger-istio-flux/tree/main/docs/part-02/README.md)
+* [Part 03 - Install Tekton and build pipelines](https://github.com/ruzickap/k8s-flagger-istio-flux/tree/main/docs/part-03/README.md)
+* [Part 04 - Install Flagger](https://github.com/ruzickap/k8s-flagger-istio-flux/tree/main/docs/part-04/README.md)
+* [Part 05 - Canary deployment using Flagger](https://github.com/ruzickap/k8s-flagger-istio-flux/tree/main/docs/part-05/README.md)
+
+## Links
+
+* [https://github.com/justinbarrick/fluxcloud](https://github.com/justinbarrick/fluxcloud)
+* [https://github.com/stefanprodan/openfaas-flux](https://github.com/stefanprodan/openfaas-flux)
+* [https://github.com/fluxcd/helm-operator-get-started](https://github.com/fluxcd/helm-operator-get-started)
+* [https://github.com/stefanprodan/gitops-istio](https://github.com/stefanprodan/gitops-istio)
+* [Automated canary deployments with Flagger and Istio](https://medium.com/google-cloud/automated-canary-deployments-with-flagger-and-istio-ac747827f9d1)
+* [AWS Container Day - Weaveworks Partner Demo](https://youtu.be/IV5VXkAzPw0)
+* [OSS Unboxing - SMI Traffic Split](https://youtu.be/e5kv9E48Bac)
+* [SMI Istio Canary Deployments](https://github.com/weaveworks/flagger/blob/b6958733e19e9d1ec348613f4d86d58e5cac6e88/docs/gitbook/tutorials/flagger-smi-istio.md)
+
+![Flux logo](https://raw.githubusercontent.com/fluxcd/flux/18e5174581f44ed8c9a881dd5071179eed1ebf4d/docs/_files/flux-logo-vertical.svg?sanitize=true
+"Flux logo")
