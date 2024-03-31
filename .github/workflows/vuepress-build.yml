@@ -36,7 +36,7 @@ jobs:
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@1f0c5cde4bc74cd7e1254d0cb4de8d49e9068c7d # v4.0.0
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
 
       - name: Check broken links
         uses: ruzickap/action-my-broken-link-checker@bec36cf5736d969f1c5191b9fd2052df87675012 # v2.6.0
