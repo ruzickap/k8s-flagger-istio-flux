@@ -15,7 +15,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: Checkout Code
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
 
       - name: Restore lychee cache
         uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
@@ -38,8 +38,9 @@ jobs:
           chmod a+x README.sh
 
       - name: 💡 MegaLinter
-        uses: oxsecurity/megalinter@a7a0163b6c8ff7474a283d99a706e27483ddd80f # v7.10.0
+        uses: oxsecurity/megalinter@03986e6993ccf699a22451118520680b438e7d2a # v7.11.1
         env:
           GITHUB_COMMENT_REPORTER: false
-          GITHUB_STATUS_REPORTER: true
+          # Disabled due to error: [GitHub Status Reporter] Error posting Status for REPOSITORY with ...: 403
+          GITHUB_STATUS_REPORTER: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
