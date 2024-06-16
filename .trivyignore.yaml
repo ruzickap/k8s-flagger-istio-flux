@@ -1,4 +1,6 @@
 vulnerabilities:
+  # │ braces                 │ CVE-2024-4068  │ HIGH     │ fixed  │ 2.3.2             │ 3.0.3               │ braces: fails to limit the number of characters it can      │
+  - id: CVE-2024-4068
   # │ glob-parent            │ CVE-2020-28469 │ HIGH     │ fixed  │ 3.1.0             │ 5.1.2               │ Regular expression denial of service                        │
   - id: CVE-2020-28469
   # │ json5                  │ CVE-2022-46175 │ HIGH     │ fixed  │ 0.5.1             │ 2.2.2, 1.0.2        │ json5: Prototype Pollution in JSON5 via Parse Method        │
