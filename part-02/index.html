@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Install Flux | Kubernetes + Flagger + Flux + Istio</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="https://raw.githubusercontent.com/kubernetes/kubernetes/d9a58a39b69a0eaec5797e0f7a0f9472b4829ab0/logo/logo.svg">
+    <meta name="description" content="Kubernetes + Flagger + Flux + Istio">
+    
+    <link rel="preload" href="/k8s-flagger-istio-flux/assets/css/0.styles.0b0f7ae0.css" as="style"><link rel="preload" href="/k8s-flagger-istio-flux/assets/js/app.0330d4d8.js" as="script"><link rel="preload" href="/k8s-flagger-istio-flux/assets/js/2.6971ee29.js" as="script"><link rel="preload" href="/k8s-flagger-istio-flux/assets/js/1.af2c21d0.js" as="script"><link rel="preload" href="/k8s-flagger-istio-flux/assets/js/25.01af3c60.js" as="script"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/10.b1be4714.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/11.7f45dc7c.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/12.d628890b.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/13.2a84b47c.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/14.5b0acac8.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/15.dd70f794.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/16.80901fdf.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/17.1e911f65.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/18.322a75f0.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/19.4ac02090.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/20.489a61e7.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/21.69d34ecf.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/22.b0b41aeb.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/23.654701c2.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/24.53cdd24b.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/26.bf5cc255.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/27.acbaf8d9.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/28.bb6b549b.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/3.806514d9.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/4.b322bf02.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/5.7ea445aa.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/6.7d8d728e.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/7.f7bf8d6b.js"><link rel="prefetch" href="/k8s-flagger-istio-flux/assets/js/vendors~docsearch.cdf71c8e.js">
+    <link rel="stylesheet" href="/k8s-flagger-istio-flux/assets/css/0.styles.0b0f7ae0.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/k8s-flagger-istio-flux/" class="home-link router-link-active"><img src="https://raw.githubusercontent.com/kubernetes/kubernetes/d9a58a39b69a0eaec5797e0f7a0f9472b4829ab0/logo/logo.svg" alt="Kubernetes + Flagger + Flux + Istio" class="logo"> <span class="site-name can-hide">Kubernetes + Flagger + Flux + Istio</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/k8s-flagger-istio-flux/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Links" class="dropdown-title"><span class="title">Links</span> <span class="arrow down"></span></button> <button type="button" aria-label="Links" class="mobile-dropdown-title"><span class="title">Links</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://fluxcd.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Flux
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://flagger.app" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Flagger
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <a href="https://github.com/ruzickap/k8s-flagger-istio-flux" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/k8s-flagger-istio-flux/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Links" class="dropdown-title"><span class="title">Links</span> <span class="arrow down"></span></button> <button type="button" aria-label="Links" class="mobile-dropdown-title"><span class="title">Links</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://fluxcd.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Flux
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://flagger.app" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Flagger
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <a href="https://github.com/ruzickap/k8s-flagger-istio-flux" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/k8s-flagger-istio-flux/" aria-current="page" class="sidebar-link">Kubernetes + Flagger + Flux + Istio</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/k8s-flagger-istio-flux/#requirements" class="sidebar-link">Requirements</a></li><li class="sidebar-sub-header"><a href="/k8s-flagger-istio-flux/#content" class="sidebar-link">Content</a></li><li class="sidebar-sub-header"><a href="/k8s-flagger-istio-flux/#links" class="sidebar-link">Links</a></li></ul></li><li><a href="/k8s-flagger-istio-flux/part-01/" class="sidebar-link">Create k8s cluster</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/k8s-flagger-istio-flux/part-01/#prepare-the-local-working-environment" class="sidebar-link">Prepare the local working environment</a></li><li class="sidebar-sub-header"><a href="/k8s-flagger-istio-flux/part-01/#prepare-the-azure-environment" class="sidebar-link">Prepare the Azure environment</a></li><li class="sidebar-sub-header"><a href="/k8s-flagger-istio-flux/part-01/#create-k8s-in-azure" class="sidebar-link">Create k8s in Azure</a></li></ul></li><li><a href="/k8s-flagger-istio-flux/part-02/" aria-current="page" class="active sidebar-link">Install Flux</a></li><li><a href="/k8s-flagger-istio-flux/part-03/" class="sidebar-link">Install Tekton and build pipelines</a></li><li><a href="/k8s-flagger-istio-flux/part-04/" class="sidebar-link">Install Flagger</a></li><li><a href="/k8s-flagger-istio-flux/part-05/" class="sidebar-link">Blue / Green deployment</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/k8s-flagger-istio-flux/part-05/#canary-deployment" class="sidebar-link">Canary deployment</a></li><li class="sidebar-sub-header"><a href="/k8s-flagger-istio-flux/part-05/#failed-canary-deployment" class="sidebar-link">Failed Canary deployment</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="install-flux"><a href="#install-flux" class="header-anchor">#</a> Install Flux</h1> <p>Create registry secret for accessing Azure Container Registry
+in <code>flux</code> namespace:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>kubectl create namespace flux
+kubectl create secret <span class="token parameter variable">--namespace</span> flux docker-registry docker-config <span class="token punctuation">\</span>
+  --docker-server<span class="token operator">=</span><span class="token string">&quot;pruzickak8smyexampledev.azurecr.io&quot;</span> <span class="token punctuation">\</span>
+  --docker-username<span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${ARM_CLIENT_ID}</span>&quot;</span> <span class="token punctuation">\</span>
+  --docker-password<span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${ARM_CLIENT_SECRET}</span>&quot;</span>
+</code></pre></div><p>Flux Architecture:</p> <p><img src="https://github.com/fluxcd/flux/raw/18e5174581f44ed8c9a881dd5071179eed1ebf4d/docs/_files/flux-cd-diagram.png" alt="Flux Architecture" title="Flux Architecture"></p> <p>Create git repository which will be used by Flux in GitHub:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>hub create <span class="token parameter variable">-d</span> <span class="token string">&quot;Flux repository for k8s-flagger-istio-flux&quot;</span> <span class="token parameter variable">-h</span> <span class="token string">&quot;https://ruzickap.github.io/k8s-flagger-istio-flux/&quot;</span> ruzickap/k8s-flux-repository
+</code></pre></div><p>Output:</p> <div class="language-text extra-class"><pre class="language-text"><code>A git remote named 'origin' already exists and is set to push to 'ssh://git@github.com/ruzickap/k8s-flagger-istio-flux.git'.
+https://github.com/ruzickap/k8s-flux-repository
+</code></pre></div><p>Clone the git repository:</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">mkdir</span> tmp
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-n</span> <span class="token string">&quot;<span class="token variable"><span class="token variable">$(</span><span class="token function">grep</span> <span class="token string">&quot;^github.com &quot;</span> ~/.ssh/known_hosts<span class="token variable">)</span></span>&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span> ssh-keyscan github.com <span class="token operator">&gt;&gt;</span> ~/.ssh/known_hosts <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span> /dev/null<span class="token punctuation">;</span> <span class="token keyword">fi</span>
+<span class="token function">git</span> config <span class="token parameter variable">--global</span> user.email <span class="token string">&quot;petr.ruzicka@gmail.com&quot;</span>
+<span class="token function">git</span> <span class="token parameter variable">-C</span> tmp clone git@github.com:ruzickap/k8s-flux-repository.git
+</code></pre></div><p>Output:</p> <div class="language-text extra-class"><pre class="language-text"><code>Cloning into 'k8s-flux-repository'...
+warning: You appear to have cloned an empty repository.
+</code></pre></div><p>Create initial Flux repository structure and add it into the git repository:</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">cp</span> <span class="token parameter variable">-v</span> files/flux-repository/README.md tmp/k8s-flux-repository/
+<span class="token function">mkdir</span> <span class="token parameter variable">-v</span> tmp/k8s-flux-repository/<span class="token punctuation">{</span>namespaces,releases,workloads<span class="token punctuation">}</span>
+
+<span class="token function">git</span> <span class="token parameter variable">-C</span> tmp/k8s-flux-repository <span class="token function">add</span> <span class="token builtin class-name">.</span>
+<span class="token function">git</span> <span class="token parameter variable">-C</span> tmp/k8s-flux-repository commit <span class="token parameter variable">-m</span> <span class="token string">&quot;Initial commit&quot;</span>
+<span class="token function">git</span> <span class="token parameter variable">-C</span> tmp/k8s-flux-repository push <span class="token parameter variable">-q</span>
+</code></pre></div><p>Output:</p> <div class="language-text extra-class"><pre class="language-text"><code>'files/flux-repository/README.md' -&gt; 'tmp/k8s-flux-repository/README.md'
+mkdir: created directory 'tmp/k8s-flux-repository/namespaces'
+mkdir: created directory 'tmp/k8s-flux-repository/releases'
+mkdir: created directory 'tmp/k8s-flux-repository/workloads'
+[master (root-commit) 01ec748] Initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+</code></pre></div><p>Add the Flux repository:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>helm repo <span class="token function">add</span> fluxcd https://charts.fluxcd.io
+helm update
+</code></pre></div><p>Output:</p> <div class="language-text extra-class"><pre class="language-text"><code>&quot;fluxcd&quot; has been added to your repositories
+Command &quot;update&quot; is deprecated, use 'helm repo update'
+
+Hang tight while we grab the latest from your chart repositories...
+...Skip local chart repository
+...Successfully got an update from the &quot;fluxcd&quot; chart repository
+...Successfully got an update from the &quot;stable&quot; chart repository
+Update Complete.
+</code></pre></div><p>Apply the Helm Release CRD:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>kubectl apply <span class="token parameter variable">-f</span> https://raw.githubusercontent.com/fluxcd/flux/helm-0.10.1/deploy-helm/flux-helm-release-crd.yaml
+</code></pre></div><p>Output:</p> <div class="language-text extra-class"><pre class="language-text"><code>customresourcedefinition.apiextensions.k8s.io/helmreleases.flux.weave.works created
+</code></pre></div><p>Install Flux:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>helm <span class="token function">install</span> <span class="token parameter variable">--name</span> flux <span class="token parameter variable">--namespace</span> flux <span class="token parameter variable">--wait</span> <span class="token parameter variable">--version</span> <span class="token number">0.14</span>.1 fluxcd/flux <span class="token punctuation">\</span>
+  <span class="token parameter variable">--set</span> <span class="token assign-left variable">git.email</span><span class="token operator">=</span><span class="token string">&quot;petr.ruzicka@gmail.com&quot;</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">--set</span> <span class="token assign-left variable">git.url</span><span class="token operator">=</span><span class="token string">&quot;git@github.com:ruzickap/k8s-flux-repository&quot;</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">--set</span> <span class="token assign-left variable">git.user</span><span class="token operator">=</span><span class="token string">&quot;Flux&quot;</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">--set</span> <span class="token assign-left variable">helmOperator.create</span><span class="token operator">=</span><span class="token string">&quot;true&quot;</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">--set</span> <span class="token assign-left variable">helmOperator.createCRD</span><span class="token operator">=</span><span class="token string">&quot;false&quot;</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">--set</span> <span class="token assign-left variable">registry.dockercfg.configFileName</span><span class="token operator">=</span><span class="token string">&quot;/dockercfg/config.json&quot;</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">--set</span> <span class="token assign-left variable">registry.dockercfg.enabled</span><span class="token operator">=</span><span class="token string">&quot;true&quot;</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">--set</span> <span class="token assign-left variable">registry.dockercfg.secretName</span><span class="token operator">=</span><span class="token string">&quot;docker-config&quot;</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">--set</span> <span class="token assign-left variable">registry.pollInterval</span><span class="token operator">=</span><span class="token string">&quot;10s&quot;</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">--set</span> <span class="token assign-left variable">syncGarbageCollection.enabled</span><span class="token operator">=</span><span class="token string">&quot;true&quot;</span>
+</code></pre></div><p>Output:</p> <div class="language-text extra-class"><pre class="language-text"><code>NAME:   flux
+LAST DEPLOYED: Thu Aug 29 09:39:10 2019
+NAMESPACE: flux
+STATUS: DEPLOYED
+
+RESOURCES:
+==&gt; v1/ConfigMap
+NAME              DATA  AGE
+flux-kube-config  1     16s
+
+==&gt; v1/Deployment
+NAME                READY  UP-TO-DATE  AVAILABLE  AGE
+flux                1/1    1           1          16s
+flux-helm-operator  1/1    1           1          16s
+flux-memcached      1/1    1           1          16s
+
+==&gt; v1/Pod(related)
+NAME                                 READY  STATUS   RESTARTS  AGE
+flux-bbb76576-8clvg                  1/1    Running  0         16s
+flux-helm-operator-6877b9f564-rt5rl  1/1    Running  0         16s
+flux-memcached-88db78d9d-vnrl7       1/1    Running  0         16s
+
+==&gt; v1/Secret
+NAME             TYPE    DATA  AGE
+flux-git-deploy  Opaque  1     16s
+
+==&gt; v1/Service
+NAME            TYPE       CLUSTER-IP      EXTERNAL-IP  PORT(S)    AGE
+flux            ClusterIP  100.70.220.201  &amp;lt;none&gt;       3030/TCP   16s
+flux-memcached  ClusterIP  100.64.195.153  &amp;lt;none&gt;       11211/TCP  16s
+
+==&gt; v1/ServiceAccount
+NAME  SECRETS  AGE
+flux  1        16s
+
+==&gt; v1beta1/ClusterRole
+NAME  AGE
+flux  16s
+
+==&gt; v1beta1/ClusterRoleBinding
+NAME  AGE
+flux  16s
+
+
+NOTES:
+Get the Git deploy key by either (a) running
+
+  kubectl -n flux logs deployment/flux | grep identity.pub | cut -d '&quot;' -f2
+
+or by (b) installing fluxctl through
+https://github.com/weaveworks/flux/blob/master/docs/references/fluxctl.md#installing-fluxctl
+and running:
+
+  fluxctl identity
+</code></pre></div><p>Install <a href="https://docs.fluxcd.io/en/stable/references/fluxctl/" target="_blank" rel="noopener noreferrer">fluxctl<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>:</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-x</span> /usr/local/bin/fluxctl <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token function">sudo</span> <span class="token function">curl</span> <span class="token parameter variable">-L</span> https://github.com/fluxcd/flux/releases/download/1.14.2/fluxctl_linux_amd64 <span class="token parameter variable">-o</span> /usr/local/bin/fluxctl
+  <span class="token function">sudo</span> <span class="token function">chmod</span> a+x /usr/local/bin/fluxctl
+<span class="token keyword">fi</span>
+</code></pre></div><p>Set the namespace (<code>flux</code>) where flux was installed for running <code>fluxctl</code>:</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">FLUX_FORWARD_NAMESPACE</span><span class="token operator">=</span><span class="token string">&quot;flux&quot;</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">FLUX_TIMEOUT</span><span class="token operator">=</span><span class="token string">&quot;10m0s&quot;</span>
+</code></pre></div><p>Obtain the ssh public key through <code>fluxctl</code>:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>fluxctl identity
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-x</span> /usr/bin/chromium-browser <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span> chromium-browser https://github.com/ruzickap/k8s-flux-repository/settings/keys/new <span class="token operator">&amp;</span> <span class="token keyword">fi</span>
+</code></pre></div><p>Output:</p> <div class="language-text extra-class"><pre class="language-text"><code>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyGvcJPcFxvsc9SHtJiOt7G6pvNQgmcf+PIIfy6PoEvXK2naXmKw68+dtKeIoMzvp63QxoNB+B6qamMbkWqaVCjS4glAXKmf68k/eCazcPNZaQRmL/YUmgmyZ8AF02fDmM/RQMz/2hUtUE6UYs/T5vYUdDwYb09nOmVMgclY6jbmQ4b0OgG18p6RnNYtJ4wysC6+wEoy5xVljKWRE03UxD3pJbVdk5KPcJ/mnX44tUwU/oE/Ezz7LaMjVXnXns8zKu3LOAIeolcCFVJUbUMQhOuvwrXp+Sag1VV3OG4Uy6P3/0wIajEumzHO4GvpAEJ1F1Ny4b692wP/TdUX/WWAIr
+</code></pre></div><p>Add the ssh key to the GitHub &quot;<a href="https://github.com/ruzickap/k8s-flux-repository" target="_blank" rel="noopener noreferrer">https://github.com/ruzickap/k8s-flux-repository<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>&quot;
+-&gt; &quot;Settings&quot; -&gt; &quot;Deploy keys&quot; -&gt; &quot;Add new&quot; -&gt; &quot;Allow write access&quot;</p> <p><img src="https://raw.githubusercontent.com/fluxcd/flux/18e5174581f44ed8c9a881dd5071179eed1ebf4d/docs/_files/flux.svg?sanitize=true" alt="Flux logo" title="Flux logo"></p> <hr></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/ruzickap/k8s-flagger-istio-flux/edit/master/docs/part-02/README.md" target="_blank" rel="noopener noreferrer">Edit this page</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">6/30/2024, 4:09:51 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/k8s-flagger-istio-flux/part-01/" class="prev">
+        Create k8s cluster
+      </a></span> <span class="next"><a href="/k8s-flagger-istio-flux/part-03/">
+        Install Tekton and build pipelines
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/k8s-flagger-istio-flux/assets/js/app.0330d4d8.js" defer></script><script src="/k8s-flagger-istio-flux/assets/js/2.6971ee29.js" defer></script><script src="/k8s-flagger-istio-flux/assets/js/1.af2c21d0.js" defer></script><script src="/k8s-flagger-istio-flux/assets/js/25.01af3c60.js" defer></script>
+  </body>
+</html>
