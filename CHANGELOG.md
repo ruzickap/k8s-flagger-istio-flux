@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.3.0](https://github.com/ruzickap/k8s-flagger-istio-flux/compare/v0.2.0...v0.3.0) (2024-07-02)
+
+
+### Features
+
+* **gh:** add default GitHub repo files ([#157](https://github.com/ruzickap/k8s-flagger-istio-flux/issues/157)) ([5028012](https://github.com/ruzickap/k8s-flagger-istio-flux/commit/5028012241c0bd49ddab1561c1594c6084fa8d08))
+* **gh:** add default GitHub repo files ([#158](https://github.com/ruzickap/k8s-flagger-istio-flux/issues/158)) ([66eb1d2](https://github.com/ruzickap/k8s-flagger-istio-flux/commit/66eb1d22eacc3a7b9284525d993c56d811f4aff7))
+* **gha:** update gha + add ignore-unfixed to trivy ([#174](https://github.com/ruzickap/k8s-flagger-istio-flux/issues/174)) ([a8cec8b](https://github.com/ruzickap/k8s-flagger-istio-flux/commit/a8cec8b11e65dc28343fe9afb566de776339b957))
+
+
+### Bug Fixes
+
+* add CVE-2024-4068 to .trivyignore.yaml ([#182](https://github.com/ruzickap/k8s-flagger-istio-flux/issues/182)) ([b59c143](https://github.com/ruzickap/k8s-flagger-istio-flux/commit/b59c143ab63831413ae0f98f4de07c9147318b03))
+* **doc:** fix k8s logo url ([#175](https://github.com/ruzickap/k8s-flagger-istio-flux/issues/175)) ([99ea157](https://github.com/ruzickap/k8s-flagger-istio-flux/commit/99ea15751f5a769bf9f2c3e146aebe3a466b0a00))
+* **renovate:** skip terraform updates ([#154](https://github.com/ruzickap/k8s-flagger-istio-flux/issues/154)) ([88eadfa](https://github.com/ruzickap/k8s-flagger-istio-flux/commit/88eadfaf47869ba451ff5bc3788d0f80396e1ecb))
+* **tekton:** fix tekton configuration ([#156](https://github.com/ruzickap/k8s-flagger-istio-flux/issues/156)) ([12a12d7](https://github.com/ruzickap/k8s-flagger-istio-flux/commit/12a12d7f845a98a6f8bb70fb75b920dcd16ad037))
+* **url:** exclude package-lock.json from URL checks ([#179](https://github.com/ruzickap/k8s-flagger-istio-flux/issues/179)) ([b3f05dd](https://github.com/ruzickap/k8s-flagger-istio-flux/commit/b3f05dda21efbb7b78b7602dba96dbb18f91af89))
+
 ## [0.2.0](https://github.com/ruzickap/k8s-flagger-istio-flux/compare/v0.1.1...v0.2.0) (2024-02-04)
 
 
